@@ -425,7 +425,7 @@ export default function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState(false);
-  const [galleryIdx, setGalleryIdx] = useState(0);
+  const [galleryIdx, setGalleryIdx] = useState<number | null>(null);
 
   const [conName, setConName] = useState("");
   const [conPhone, setConPhone] = useState("");
@@ -689,7 +689,7 @@ export default function Index() {
 
           {galleryIdx !== null && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.92)" }}
-              onClick={() => setGalleryIdx(0)}>
+              onClick={() => setGalleryIdx(null)}>
               <img src={GALLERY_IMAGES[galleryIdx].url} alt="" className="max-w-3xl w-full rounded-2xl" />
             </div>
           )}
