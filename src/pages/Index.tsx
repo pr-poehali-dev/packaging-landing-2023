@@ -528,7 +528,7 @@ export default function Index() {
 
   const heroRef = useInView(0.1);
   const heroShots = useCountUp(5000, 1400, heroRef.inView);
-  const heroDays = useCountUp(5, 900, heroRef.inView);
+  const heroDays = useCountUp(5, 1400, heroRef.inView);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
