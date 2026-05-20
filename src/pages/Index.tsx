@@ -849,48 +849,51 @@ export default function Index() {
         {portfolioModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.92)" }}
             onClick={() => setPortfolioModal(null)}>
-            <div className="relative w-full max-w-lg rounded-2xl overflow-hidden max-h-[88vh] flex flex-col" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}
+            <div className="relative w-full max-w-2xl rounded-2xl overflow-hidden" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}
               onClick={e => e.stopPropagation()}>
-              <div className="relative flex-shrink-0" style={{ aspectRatio: "16/7" }}>
-                <img src={portfolioModal.img} alt={portfolioModal.title} className="w-full h-full object-cover" />
-                <button onClick={() => setPortfolioModal(null)} className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-colors"
-                  style={{ background: "rgba(0,0,0,0.6)", color: "#fff" }}>
-                  <Icon name="X" size={16} />
-                </button>
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ background: "rgba(0,0,0,0.25)" }}>
-                  <span className="px-3 py-1 rounded-full text-xs font-bold border" style={{ background: "rgba(0,0,0,0.5)", color: "rgba(255,255,255,0.7)", borderColor: "rgba(255,255,255,0.3)" }}>ПРИМЕР</span>
-                </div>
-              </div>
-              <div className="p-5 overflow-y-auto">
-                <span className="inline-block px-2 py-1 rounded-md text-xs font-bold mb-2" style={{ background: "rgba(255,107,0,0.15)", color: "var(--c-accent)", border: "1px solid rgba(255,107,0,0.3)" }}>{portfolioModal.category}</span>
-                <h3 className="font-black text-xl mb-4" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>{portfolioModal.title}</h3>
-                <div className="grid grid-cols-2 gap-2 mb-4">
-                  {[
-                    { label: "Тираж", val: portfolioModal.volume },
-                    { label: "Срок", val: portfolioModal.deadline },
-                    { label: "Формат", val: portfolioModal.format },
-                    { label: "Плотность", val: portfolioModal.density },
-                    { label: "Вид печати", val: portfolioModal.printType },
-                    { label: "Материал", val: portfolioModal.material },
-                  ].map((item, i) => (
-                    <div key={i} className="p-2.5 rounded-xl" style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)" }}>
-                      <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>{item.label}</div>
-                      <div className="text-sm font-semibold" style={{ color: "var(--c-text)" }}>{item.val}</div>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex items-start gap-3 p-3 rounded-xl mb-4" style={{ background: "rgba(255,107,0,0.08)", border: "1px solid rgba(255,107,0,0.2)" }}>
-                  <Icon name="TrendingUp" size={18} style={{ color: "var(--c-accent)", flexShrink: 0, marginTop: 2 } as React.CSSProperties} />
-                  <div>
-                    <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>Результат</div>
-                    <div className="text-sm font-semibold" style={{ color: "var(--c-text)" }}>{portfolioModal.result}</div>
+              <button onClick={() => setPortfolioModal(null)} className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full flex items-center justify-center"
+                style={{ background: "rgba(0,0,0,0.6)", color: "#fff" }}>
+                <Icon name="X" size={16} />
+              </button>
+              <div className="flex flex-col sm:flex-row">
+                {/* Photo — compact */}
+                <div className="relative flex-shrink-0 sm:w-48" style={{ minHeight: "160px" }}>
+                  <img src={portfolioModal.img} alt={portfolioModal.title} className="w-full h-full object-cover" style={{ position: "absolute", inset: 0 }} />
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(0,0,0,0.2)" }}>
+                    <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded text-xs font-bold" style={{ background: "rgba(255,107,0,0.85)", color: "#000" }}>{portfolioModal.category}</span>
                   </div>
                 </div>
-                <button onClick={() => { setPortfolioModal(null); setQuizOpen(true); }}
-                  className="w-full py-3 rounded-xl font-bold text-black transition-all hover:opacity-90"
-                  style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em" }}>
-                  МНЕ НУЖНО ТАК ЖЕ →
-                </button>
+                {/* Content */}
+                <div className="p-5 flex flex-col gap-3 flex-1 min-w-0">
+                  <h3 className="font-black text-lg leading-tight" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>{portfolioModal.title}</h3>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {[
+                      { label: "Тираж", val: portfolioModal.volume },
+                      { label: "Срок", val: portfolioModal.deadline },
+                      { label: "Формат", val: portfolioModal.format },
+                      { label: "Плотность", val: portfolioModal.density },
+                      { label: "Вид печати", val: portfolioModal.printType },
+                      { label: "Материал", val: portfolioModal.material },
+                    ].map((item, i) => (
+                      <div key={i} className="p-2 rounded-lg" style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)" }}>
+                        <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>{item.label}</div>
+                        <div className="text-xs font-semibold" style={{ color: "var(--c-text)" }}>{item.val}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex items-start gap-2 p-2.5 rounded-xl" style={{ background: "rgba(255,107,0,0.08)", border: "1px solid rgba(255,107,0,0.2)" }}>
+                    <Icon name="TrendingUp" size={16} style={{ color: "var(--c-accent)", flexShrink: 0, marginTop: 1 } as React.CSSProperties} />
+                    <div>
+                      <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>Результат</div>
+                      <div className="text-xs font-semibold" style={{ color: "var(--c-text)" }}>{portfolioModal.result}</div>
+                    </div>
+                  </div>
+                  <button onClick={() => { setPortfolioModal(null); setQuizOpen(true); }}
+                    className="w-full py-2.5 rounded-xl font-bold text-black text-sm transition-all hover:opacity-90"
+                    style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em" }}>
+                    МНЕ НУЖНО ТАК ЖЕ →
+                  </button>
+                </div>
               </div>
             </div>
           </div>
