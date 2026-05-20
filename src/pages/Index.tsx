@@ -564,6 +564,12 @@ export default function Index() {
               <a key={l.href} href={l.href} className="text-sm font-medium transition-colors hover:opacity-80 whitespace-nowrap" style={{ color: "var(--c-muted)" }}>{l.label}</a>
             ))}
           </div>
+          <div className="hidden lg:flex flex-col items-end gap-0.5 flex-shrink-0">
+            <a href="tel:+74950000000" className="text-sm font-semibold transition-colors hover:opacity-80 whitespace-nowrap"
+              style={{ color: "var(--c-text)" }}>+7 (495) 000-00-00</a>
+            <a href="mailto:info@pkzapad.ru" className="text-xs transition-colors hover:opacity-80 whitespace-nowrap"
+              style={{ color: "var(--c-muted)" }}>info@pkzapad.ru</a>
+          </div>
           <button onClick={() => setCallbackOpen(true)} className="hidden md:block px-5 py-2 rounded-lg font-bold text-black text-sm transition-opacity hover:opacity-90 whitespace-nowrap flex-shrink-0"
             style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em" }}>
             ПЕРЕЗВОНИТЕ МНЕ
@@ -611,7 +617,7 @@ export default function Index() {
 
             <h1 className="font-black leading-tight mb-2"
               style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2.2rem, 5.5vw, 4.5rem)", letterSpacing: "-0.01em", color: "var(--c-text)" }}>
-              Производство и печать упаковки
+              Производство и печать упаковки из картона
             </h1>
             <h2 className="font-black leading-tight mb-3"
               style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(1.6rem, 4vw, 3.2rem)", letterSpacing: "-0.01em", color: "var(--c-text)" }}>
