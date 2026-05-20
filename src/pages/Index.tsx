@@ -662,9 +662,13 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-12">
             <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>НАШИ РАБОТЫ</div>
-            <h2 className="font-black" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
+            <h2 className="font-black mb-4" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
               Портфолио и<br /><span style={{ color: "var(--c-accent)" }}>благодарности</span>
             </h2>
+            <p className="text-base flex items-center gap-2" style={{ color: "var(--c-muted)" }}>
+              <Icon name="ShieldCheck" size={16} />
+              Имя клиента не раскрываем — факт подтверждаем документально
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-4">
