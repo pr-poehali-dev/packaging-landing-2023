@@ -877,14 +877,6 @@ export default function Index() {
       </footer>
 
       <style>{`
-        :root {
-          --c-bg: #0e0e10;
-          --c-surface: #16161a;
-          --c-border: #2a2a30;
-          --c-text: #f0f0f2;
-          --c-muted: #8a8a99;
-          --c-accent: #ff6b00;
-        }
         @keyframes scanline {
           from { transform: translateY(-10px); }
           to { transform: translateY(10px); }
