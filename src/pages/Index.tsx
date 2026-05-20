@@ -499,12 +499,14 @@ export default function Index() {
       </nav>
 
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center pt-16 overflow-hidden" id="hero">
-        <div className="absolute inset-0">
-          <img src={HERO_IMAGE} alt="Упаковка" className="w-full h-full object-cover" />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(110deg, rgba(14,14,16,0.95) 45%, rgba(14,14,16,0.5) 100%)" }} />
-          <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 80% 50%, rgba(255,107,0,0.15) 0%, transparent 60%)" }} />
-        </div>
+      <section className="relative min-h-screen flex items-center pt-16 overflow-hidden" id="hero"
+        style={{
+          backgroundImage: `linear-gradient(110deg, rgba(14,14,16,0.96) 45%, rgba(14,14,16,0.6) 100%), url(${HERO_IMAGE})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}>
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle at 80% 50%, rgba(255,107,0,0.15) 0%, transparent 60%)" }} />
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {[...Array(5)].map((_, i) => (
             <div key={i} className="absolute" style={{ top: `${10 + i * 18}%`, left: "-10%", right: "-10%", height: "1px",
