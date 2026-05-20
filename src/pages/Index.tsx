@@ -499,7 +499,7 @@ export default function Index() {
       </nav>
 
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center pt-16" id="hero">
+      <section className="relative min-h-screen flex items-center pt-16 overflow-hidden" id="hero">
         <div className="absolute inset-0">
           <img src={HERO_IMAGE} alt="Упаковка" className="w-full h-full object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(110deg, rgba(14,14,16,0.95) 45%, rgba(14,14,16,0.5) 100%)" }} />
