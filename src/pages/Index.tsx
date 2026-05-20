@@ -61,14 +61,14 @@ const ADVANTAGES = [
 ];
 
 const PORTFOLIO_ITEMS = [
-  { icon: "Hamburger", title: "Фастфуд и продукты", desc: "Коробки, пакеты, контейнеры. Любой размер, полноцветная печать." },
+  { icon: "Sandwich", title: "Фастфуд и продукты", desc: "Коробки, пакеты, контейнеры. Любой размер, полноцветная печать." },
   { icon: "Cake", title: "Кондитерские изделия", desc: "Коробки для тортов, пирожных, конфет. С окном и без." },
   { icon: "ShoppingBasket", title: "Крупы, чай, кофе", desc: "Пакеты с zip-lock, коробки, сашетки. Барьерные материалы." },
   { icon: "WashingMachine", title: "Бытовая химия", desc: "Упаковка из плотного картона с ламинацией. Устойчива к влаге." },
   { icon: "Pill", title: "Фармацевтические препараты", desc: "Пачки из мелованного картона по ГОСТ. Сериализация." },
   { icon: "FlaskConical", title: "Парфюмерия и косметика", desc: "Люксовая упаковка с тиснением, фольгой, выборочным UV." },
   { icon: "Gem", title: "Обечайка", desc: "Цилиндрическая упаковка для чая, косметики, подарков." },
-  { icon: "Pill", title: "БАДы", desc: "Картонная упаковка с маркировкой, штрихкодами и серийными номерами." },
+  { icon: "Container", title: "БАДы", desc: "Картонная упаковка с маркировкой, штрихкодами и серийными номерами." },
   { icon: "Package", title: "Гофрокороба малых тиражей", desc: "От 1000 шт. — под заказ. Уточняйте у менеджера.", badge: "Под заказ" },
 ];
 
@@ -123,14 +123,14 @@ const FAQS = [
 ];
 
 const QUIZ_PRODUCTS = [
-  { icon: "Hamburger", label: "Фастфуд и продукты" },
+  { icon: "Sandwich", label: "Фастфуд и продукты" },
   { icon: "Cake", label: "Кондитерские изделия" },
   { icon: "ShoppingBasket", label: "Крупы, чай, кофе" },
   { icon: "WashingMachine", label: "Бытовая химия" },
   { icon: "Pill", label: "Фармацевтика" },
   { icon: "FlaskConical", label: "Косметика и парфюм" },
   { icon: "Gem", label: "Обечайка" },
-  { icon: "Pill", label: "БАДы" },
+  { icon: "Container", label: "БАДы" },
   { icon: "CircleHelp", label: "Другое" },
 ];
 
@@ -222,7 +222,7 @@ function CallbackModal({ onClose }: { onClose: () => void }) {
         </button>
         {!sent ? (
           <div className="p-8">
-            <h3 className="text-xl font-bold mb-2" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Перезвоните мне</h3>
+            <h3 className="text-xl font-bold mb-2" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Оставьте заявку</h3>
             <p className="mb-6 text-sm" style={{ color: "var(--c-muted)" }}>Изучим ваш макет и поможем сэкономить до 20% на заказе.</p>
             <div className="flex flex-col gap-3">
               <StyledInput placeholder="Ваше имя" value={name} onChange={setName} error={errors.name} />
@@ -243,8 +243,7 @@ function CallbackModal({ onClose }: { onClose: () => void }) {
             </button>
           </div>
         ) : (
-          <div className="text-center py-4">
-            <div className="text-5xl mb-4">✅</div>
+          <div className="text-center py-8 px-8">
             <h3 className="text-2xl font-bold mb-3" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Заявка принята!</h3>
             <p style={{ color: "var(--c-muted)" }}>Перезвоним вам в течение 30 минут в рабочее время.</p>
             <button onClick={onClose} className="mt-6 px-8 py-3 rounded-xl font-bold text-black"
@@ -450,7 +449,6 @@ function QuizModal({ onClose }: { onClose: () => void }) {
 
         {submitted && (
           <div className="text-center py-4">
-            <div className="text-5xl mb-4">✅</div>
             <h3 className="text-2xl font-bold mb-3" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Спасибо за заявку!</h3>
             <p className="mb-6 text-sm" style={{ color: "var(--c-muted)" }}>
               Ваша заявка на печать упаковки принята. Менеджер свяжется с вами в течение 1 рабочего часа (с 9 до 18 в будни).
@@ -486,6 +484,8 @@ export default function Index() {
   const [portfolioCat, setPortfolioCat] = useState("Все");
   const [portfolioModal, setPortfolioModal] = useState<PortfolioProject | null>(null);
   const [filterOpen, setFilterOpen] = useState(false);
+  const [slideIdx, setSlideIdx] = useState(0);
+  const [showAllReviews, setShowAllReviews] = useState(false);
 
   const [conName, setConName] = useState("");
   const [conPhone, setConPhone] = useState("");
@@ -586,9 +586,7 @@ export default function Index() {
               <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} className="py-2 text-sm font-medium border-b"
                 style={{ color: "var(--c-muted)", borderColor: "var(--c-border)" }}>{l.label}</a>
             ))}
-            <button onClick={() => { setCallbackOpen(true); setMenuOpen(false); }} className="mt-2 py-3 rounded-lg font-bold text-black"
-              style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif" }}>ПЕРЕЗВОНИТЕ МНЕ</button>
-            <div className="flex flex-col gap-2 pt-3 mt-1" style={{ borderTop: "1px solid var(--c-border)" }}>
+            <div className="flex flex-col gap-2 pt-1">
               <a href="tel:+74950000000" className="flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--c-text)" }}>
                 <Icon name="Phone" size={15} style={{ color: "var(--c-accent)" } as React.CSSProperties} />
                 +7 (495) 000-00-00
@@ -598,6 +596,8 @@ export default function Index() {
                 info@pkzapad.ru
               </a>
             </div>
+            <button onClick={() => { setCallbackOpen(true); setMenuOpen(false); }} className="py-3 rounded-lg font-bold text-black"
+              style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif" }}>ПЕРЕЗВОНИТЕ МНЕ</button>
           </div>
         )}
       </nav>
@@ -849,21 +849,22 @@ export default function Index() {
         {portfolioModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.92)" }}
             onClick={() => setPortfolioModal(null)}>
-            <div className="relative w-full max-w-2xl rounded-2xl overflow-hidden" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}
+            <div className="relative w-full max-w-lg rounded-2xl overflow-hidden max-h-[88vh] flex flex-col" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}
               onClick={e => e.stopPropagation()}>
-              <button onClick={() => setPortfolioModal(null)} className="absolute top-4 right-4 z-10 transition-colors" style={{ color: "var(--c-muted)" }}>
-                <Icon name="X" size={22} />
-              </button>
-              <div className="relative" style={{ aspectRatio: "16/7" }}>
+              <div className="relative flex-shrink-0" style={{ aspectRatio: "16/7" }}>
                 <img src={portfolioModal.img} alt={portfolioModal.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 flex items-center justify-center" style={{ background: "rgba(0,0,0,0.35)" }}>
-                  <span className="px-4 py-2 rounded-full text-sm font-bold border" style={{ background: "rgba(0,0,0,0.5)", color: "rgba(255,255,255,0.7)", borderColor: "rgba(255,255,255,0.3)" }}>ПРИМЕР</span>
+                <button onClick={() => setPortfolioModal(null)} className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-colors"
+                  style={{ background: "rgba(0,0,0,0.6)", color: "#fff" }}>
+                  <Icon name="X" size={16} />
+                </button>
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ background: "rgba(0,0,0,0.25)" }}>
+                  <span className="px-3 py-1 rounded-full text-xs font-bold border" style={{ background: "rgba(0,0,0,0.5)", color: "rgba(255,255,255,0.7)", borderColor: "rgba(255,255,255,0.3)" }}>ПРИМЕР</span>
                 </div>
               </div>
-              <div className="p-6">
-                <span className="inline-block px-2 py-1 rounded-md text-xs font-bold mb-3" style={{ background: "rgba(255,107,0,0.15)", color: "var(--c-accent)", border: "1px solid rgba(255,107,0,0.3)" }}>{portfolioModal.category}</span>
-                <h3 className="font-black text-2xl mb-5" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>{portfolioModal.title}</h3>
-                <div className="grid grid-cols-2 gap-3 mb-5">
+              <div className="p-5 overflow-y-auto">
+                <span className="inline-block px-2 py-1 rounded-md text-xs font-bold mb-2" style={{ background: "rgba(255,107,0,0.15)", color: "var(--c-accent)", border: "1px solid rgba(255,107,0,0.3)" }}>{portfolioModal.category}</span>
+                <h3 className="font-black text-xl mb-4" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>{portfolioModal.title}</h3>
+                <div className="grid grid-cols-2 gap-2 mb-4">
                   {[
                     { label: "Тираж", val: portfolioModal.volume },
                     { label: "Срок", val: portfolioModal.deadline },
@@ -872,21 +873,21 @@ export default function Index() {
                     { label: "Вид печати", val: portfolioModal.printType },
                     { label: "Материал", val: portfolioModal.material },
                   ].map((item, i) => (
-                    <div key={i} className="p-3 rounded-xl" style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)" }}>
+                    <div key={i} className="p-2.5 rounded-xl" style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)" }}>
                       <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>{item.label}</div>
                       <div className="text-sm font-semibold" style={{ color: "var(--c-text)" }}>{item.val}</div>
                     </div>
                   ))}
                 </div>
-                <div className="flex items-start gap-3 p-4 rounded-xl mb-5" style={{ background: "rgba(255,107,0,0.08)", border: "1px solid rgba(255,107,0,0.2)" }}>
-                  <Icon name="TrendingUp" size={20} style={{ color: "var(--c-accent)", flexShrink: 0, marginTop: 2 } as React.CSSProperties} />
+                <div className="flex items-start gap-3 p-3 rounded-xl mb-4" style={{ background: "rgba(255,107,0,0.08)", border: "1px solid rgba(255,107,0,0.2)" }}>
+                  <Icon name="TrendingUp" size={18} style={{ color: "var(--c-accent)", flexShrink: 0, marginTop: 2 } as React.CSSProperties} />
                   <div>
                     <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>Результат</div>
                     <div className="text-sm font-semibold" style={{ color: "var(--c-text)" }}>{portfolioModal.result}</div>
                   </div>
                 </div>
                 <button onClick={() => { setPortfolioModal(null); setQuizOpen(true); }}
-                  className="w-full py-4 rounded-xl font-bold text-black transition-all hover:opacity-90"
+                  className="w-full py-3 rounded-xl font-bold text-black transition-all hover:opacity-90"
                   style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em" }}>
                   МНЕ НУЖНО ТАК ЖЕ →
                 </button>
@@ -906,56 +907,72 @@ export default function Index() {
             </h2>
           </div>
 
-          {/* CASE — horizontal */}
-          <div className="rounded-2xl overflow-hidden mb-10" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}>
-            <div className="p-8">
-              <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>КЕЙС</div>
-              <h3 className="font-black mb-4" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(1.2rem, 2.5vw, 1.8rem)", color: "var(--c-text)" }}>
-                Как мы напечатали 50 000 крафт-пакетов для сети фастфуда за 4 дня
-              </h3>
-              <p className="mb-5 text-sm max-w-2xl" style={{ color: "var(--c-muted)", lineHeight: 1.7 }}>
-                Сеть запускала новую акцию «Двойной бургер». Нужно было 50 000 пакетов с ярким дизайном и плотностью бумаги 120 г/м². Срок — 4 дня.
-              </p>
-              <div className="flex flex-col gap-3 mb-5">
-                {[
-                  { icon: "CheckCircle", text: "За 1 день утвердили цветопробу" },
-                  { icon: "Layers", text: "Печатали на двух линиях параллельно" },
-                  { icon: "Truck", text: "Своя доставка к утру пятого дня" },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <Icon name={item.icon as AnyIcon} size={16} style={{ color: "var(--c-accent)", flexShrink: 0 } as React.CSSProperties} />
-                    <span className="text-sm" style={{ color: "var(--c-text)" }}>{item.text}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="flex items-center gap-3 p-4 rounded-xl max-w-sm" style={{ background: "rgba(255,107,0,0.08)", border: "1px solid rgba(255,107,0,0.2)" }}>
-                <Icon name="TrendingUp" size={24} style={{ color: "var(--c-accent)", flexShrink: 0 } as React.CSSProperties} />
+          {/* CASE — two columns */}
+          <div className="rounded-2xl overflow-hidden" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}>
+            <div className="grid md:grid-cols-2 gap-0">
+              {/* Left — text */}
+              <div className="p-8 flex flex-col justify-between" style={{ borderRight: "1px solid var(--c-border)" }}>
                 <div>
-                  <div className="font-black text-lg" style={{ color: "var(--c-accent)" }}>+23% к продажам</div>
-                  <div className="text-xs" style={{ color: "var(--c-muted)" }}>Акция стартовала вовремя. Клиент выдал благодарственное письмо.</div>
+                  <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>КЕЙС</div>
+                  <h3 className="font-black mb-4" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(1.2rem, 2.5vw, 1.8rem)", color: "var(--c-text)" }}>
+                    Как мы напечатали 50 000 крафт-пакетов для сети фастфуда за 4 дня
+                  </h3>
+                  <p className="mb-5 text-sm" style={{ color: "var(--c-muted)", lineHeight: 1.7 }}>
+                    Сеть запускала новую акцию «Двойной бургер». Нужно было 50 000 пакетов с ярким дизайном и плотностью бумаги 120 г/м². Срок — 4 дня.
+                  </p>
+                  <div className="flex flex-col gap-3 mb-5">
+                    {[
+                      { icon: "CheckCircle", text: "За 1 день утвердили цветопробу" },
+                      { icon: "Layers", text: "Печатали на двух линиях параллельно" },
+                      { icon: "Truck", text: "Своя доставка к утру пятого дня" },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-3">
+                        <Icon name={item.icon as AnyIcon} size={16} style={{ color: "var(--c-accent)", flexShrink: 0 } as React.CSSProperties} />
+                        <span className="text-sm" style={{ color: "var(--c-text)" }}>{item.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-4 rounded-xl" style={{ background: "rgba(255,107,0,0.08)", border: "1px solid rgba(255,107,0,0.2)" }}>
+                  <Icon name="TrendingUp" size={24} style={{ color: "var(--c-accent)", flexShrink: 0 } as React.CSSProperties} />
+                  <div>
+                    <div className="font-black text-lg" style={{ color: "var(--c-accent)" }}>+23% к продажам</div>
+                    <div className="text-xs" style={{ color: "var(--c-muted)" }}>Акция стартовала вовремя. Клиент выдал благодарственное письмо.</div>
+                  </div>
+                </div>
+              </div>
+              {/* Right — slider */}
+              <div className="relative" style={{ minHeight: "280px" }}>
+                <div className="relative w-full h-full overflow-hidden" style={{ minHeight: "280px" }}>
+                  <img src={GALLERY_IMAGES[slideIdx].url} alt={GALLERY_IMAGES[slideIdx].caption}
+                    className="w-full h-full object-cover transition-opacity duration-300"
+                    style={{ position: "absolute", inset: 0 }} />
+                  <div className="absolute inset-0 flex items-end p-4" style={{ background: "linear-gradient(0deg, rgba(0,0,0,0.65) 0%, transparent 50%)" }}>
+                    <div className="flex items-center justify-between w-full">
+                      <span className="text-sm font-medium" style={{ color: "#fff" }}>{GALLERY_IMAGES[slideIdx].caption}</span>
+                      <span className="text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>{slideIdx + 1} / {GALLERY_IMAGES.length}</span>
+                    </div>
+                  </div>
+                  <button onClick={() => setGalleryIdx(slideIdx)}
+                    className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center"
+                    style={{ background: "rgba(0,0,0,0.5)" }}>
+                    <Icon name="ZoomIn" size={16} style={{ color: "#fff" } as React.CSSProperties} />
+                  </button>
+                </div>
+                <div className="absolute bottom-14 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+                  <button onClick={() => setSlideIdx((slideIdx - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length)}
+                    className="w-9 h-9 rounded-full flex items-center justify-center"
+                    style={{ background: "rgba(0,0,0,0.55)", border: "1px solid rgba(255,255,255,0.2)" }}>
+                    <Icon name="ChevronLeft" size={18} style={{ color: "#fff" } as React.CSSProperties} />
+                  </button>
+                  <button onClick={() => setSlideIdx((slideIdx + 1) % GALLERY_IMAGES.length)}
+                    className="w-9 h-9 rounded-full flex items-center justify-center"
+                    style={{ background: "rgba(0,0,0,0.55)", border: "1px solid rgba(255,255,255,0.2)" }}>
+                    <Icon name="ChevronRight" size={18} style={{ color: "#fff" } as React.CSSProperties} />
+                  </button>
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* PHOTO GALLERY */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {GALLERY_IMAGES.map((img, i) => (
-              <div key={i} className="relative overflow-hidden rounded-2xl cursor-pointer group"
-                style={{ aspectRatio: "4/3", border: "1px solid var(--c-border)" }}
-                onClick={() => setGalleryIdx(i)}>
-                <img src={img.url} alt={img.caption} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 flex items-end p-3" style={{ background: "linear-gradient(0deg, rgba(0,0,0,0.65) 0%, transparent 60%)" }}>
-                  <span className="text-xs font-medium" style={{ color: "#fff" }}>{img.caption}</span>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                  style={{ background: "rgba(255,107,0,0.15)" }}>
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "rgba(255,107,0,0.8)" }}>
-                    <Icon name="ZoomIn" size={18} style={{ color: "#000" } as React.CSSProperties} />
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
 
           {galleryIdx !== null && (
@@ -1000,10 +1017,11 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 overflow-x-auto pb-2 md:overflow-x-visible">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {REVIEWS.map((r, i) => (
-              <div key={i} className="p-6 rounded-2xl flex flex-col gap-4 transition-all duration-300 hover:scale-[1.01] flex-shrink-0 md:flex-shrink"
-                style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)", minWidth: "min(300px, 85vw)" }}>
+              <div key={i}
+                className={`p-6 rounded-2xl flex flex-col gap-4 transition-all duration-300 hover:scale-[1.01] ${i >= 3 && !showAllReviews ? "hidden md:flex" : ""}`}
+                style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)" }}>
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0"
                     style={{ background: "var(--c-accent)", color: "#000", fontFamily: "Oswald, sans-serif" }}>
@@ -1028,6 +1046,16 @@ export default function Index() {
               </div>
             ))}
           </div>
+          {!showAllReviews && (
+            <div className="mt-6 text-center md:hidden">
+              <button onClick={() => setShowAllReviews(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-80"
+                style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", color: "var(--c-text)" }}>
+                Показать ещё
+                <Icon name="ChevronDown" size={16} style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
