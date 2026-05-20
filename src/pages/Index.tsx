@@ -526,6 +526,10 @@ export default function Index() {
   const c3 = useCountUp(5, 800, statsRef.inView);
   const c4 = useCountUp(200, 1400, statsRef.inView);
 
+  const heroRef = useInView(0.1);
+  const heroShots = useCountUp(5000, 1400, heroRef.inView);
+  const heroDays = useCountUp(5, 900, heroRef.inView);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);
@@ -607,7 +611,7 @@ export default function Index() {
           ))}
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 py-20">
+        <div ref={heroRef.ref} className="relative max-w-7xl mx-auto px-6 py-20">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold mb-6"
               style={{ background: "rgba(255,107,0,0.15)", border: "1px solid rgba(255,107,0,0.3)", color: "var(--c-accent)" }}>
@@ -621,7 +625,7 @@ export default function Index() {
             </h1>
             <h2 className="font-black leading-tight mb-3"
               style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(1.6rem, 4vw, 3.2rem)", letterSpacing: "-0.01em", color: "var(--c-text)" }}>
-              от <span style={{ color: "var(--c-accent)" }}>5 000 шт.</span> в Москве за <span style={{ color: "var(--c-accent)" }}>5 дней</span>
+              от <span style={{ color: "var(--c-accent)" }}>{heroShots.toLocaleString("ru")} шт.</span> в Москве за <span style={{ color: "var(--c-accent)" }}>{heroDays} дней</span>
             </h2>
 
             <p className="mb-6 font-medium" style={{ color: "var(--c-muted)", fontSize: "clamp(0.95rem, 1.8vw, 1.1rem)", lineHeight: 1.6, maxWidth: "560px" }}>
