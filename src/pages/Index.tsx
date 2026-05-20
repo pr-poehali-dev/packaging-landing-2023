@@ -665,9 +665,39 @@ export default function Index() {
             <h2 className="font-black mb-4" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
               Портфолио и<br /><span style={{ color: "var(--c-accent)" }}>благодарности</span>
             </h2>
-            <p className="text-base flex items-center gap-2" style={{ color: "var(--c-muted)" }}>
-              <Icon name="ShieldCheck" size={16} />
-              Имя клиента не раскрываем — факт подтверждаем документально
+          </div>
+
+          {/* CASE */}
+          <div className="rounded-2xl p-8 mb-10" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}>
+            <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>КЕЙС</div>
+            <h3 className="font-black mb-6" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(1.3rem, 2.5vw, 2rem)", color: "var(--c-text)" }}>
+              Как мы напечатали 50 000 крафт-пакетов для сети фастфуда за 4 дня
+            </h3>
+            <p className="mb-6 text-base" style={{ color: "var(--c-muted)" }}>
+              Сеть запускала новую акцию «Двойной бургер». Нужно было 50 000 пакетов с ярким дизайном и плотностью бумаги 120 г/м². Срок — 4 дня.
+            </p>
+            <div className="grid sm:grid-cols-3 gap-4 mb-6">
+              {[
+                { icon: "CheckCircle", text: "За 1 день утвердили цветопробу" },
+                { icon: "Layers", text: "Печатали на двух линиях параллельно" },
+                { icon: "Truck", text: "Своя доставка к утру пятого дня" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3 p-4 rounded-xl" style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)" }}>
+                  <Icon name={item.icon as AnyIcon} size={18} style={{ color: "var(--c-accent)", flexShrink: 0, marginTop: 2 } as React.CSSProperties} />
+                  <span className="text-sm" style={{ color: "var(--c-text)" }}>{item.text}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center gap-4 p-4 rounded-xl mb-6" style={{ background: "rgba(255,107,0,0.08)", border: "1px solid rgba(255,107,0,0.2)" }}>
+              <Icon name="TrendingUp" size={28} style={{ color: "var(--c-accent)", flexShrink: 0 } as React.CSSProperties} />
+              <div>
+                <div className="font-black text-xl" style={{ color: "var(--c-accent)" }}>+23% к продажам</div>
+                <div className="text-sm" style={{ color: "var(--c-muted)" }}>Акция стартовала вовремя. Клиент выдал благодарственное письмо.</div>
+              </div>
+            </div>
+            <p className="text-sm flex items-center gap-2" style={{ color: "var(--c-muted)" }}>
+              <Icon name="ShieldCheck" size={14} />
+              Имена клиента не называем, но факт подтверждаем — смотри фото грамоты ниже
             </p>
           </div>
 
