@@ -54,22 +54,22 @@ const NAV_LINKS = [
 ];
 
 const ADVANTAGES = [
-  { icon: "Factory", title: "Своё производство и доставка", text: "Не платите за аренду склада и логистику сторонних перевозчиков — у нас всё своё." },
+  { icon: "Factory", title: "Своё производство", text: "Не платите за аренду склада и логистику сторонних перевозчиков — у нас всё своё." },
   { icon: "ShieldCheck", title: "Контроль на каждом этапе", text: "Технолог на линии проверяет плотность, склейку и совпадение цвета с макетом." },
   { icon: "PackageCheck", title: "Запас 2% в тираже", text: "Во избежание брака печатаем на 2% выше требуемого тиража." },
   { icon: "Truck", title: "Своя доставка — без посредников", text: "Грузовики типографии, а не курьерские службы. Ответственность за сохранность — наша." },
 ];
 
 const PORTFOLIO_ITEMS = [
-  { emoji: "🍔", title: "Фастфуд и продукты", desc: "Коробки, пакеты, контейнеры. Любой размер, полноцветная печать." },
-  { emoji: "🍰", title: "Кондитерские изделия", desc: "Коробки для тортов, пирожных, конфет. С окном и без." },
-  { emoji: "🌾", title: "Крупы, чай, кофе", desc: "Пакеты с zip-lock, коробки, сашетки. Барьерные материалы." },
-  { emoji: "🧴", title: "Бытовая химия", desc: "Упаковка из плотного картона с ламинацией. Устойчива к влаге." },
-  { emoji: "💊", title: "Фармацевтические препараты", desc: "Пачки из мелованного картона по ГОСТ. Сериализация." },
-  { emoji: "💄", title: "Парфюмерия и косметика", desc: "Люксовая упаковка с тиснением, фольгой, выборочным UV." },
-  { emoji: "🥁", title: "Обечайка", desc: "Цилиндрическая упаковка для чая, косметики, подарков." },
-  { emoji: "💊", title: "БАДы", desc: "Картонная упаковка с маркировкой, штрихкодами и серийными номерами." },
-  { emoji: "📦", title: "Гофрокороба малых тиражей", desc: "От 1000 шт. — под заказ. Уточняйте у менеджера.", badge: "Под заказ" },
+  { icon: "Sandwich", title: "Фастфуд и продукты", desc: "Коробки, пакеты, контейнеры. Любой размер, полноцветная печать." },
+  { icon: "Cake", title: "Кондитерские изделия", desc: "Коробки для тортов, пирожных, конфет. С окном и без." },
+  { icon: "ShoppingBasket", title: "Крупы, чай, кофе", desc: "Пакеты с zip-lock, коробки, сашетки. Барьерные материалы." },
+  { icon: "Droplets", title: "Бытовая химия", desc: "Упаковка из плотного картона с ламинацией. Устойчива к влаге." },
+  { icon: "Pill", title: "Фармацевтические препараты", desc: "Пачки из мелованного картона по ГОСТ. Сериализация." },
+  { icon: "Sparkles", title: "Парфюмерия и косметика", desc: "Люксовая упаковка с тиснением, фольгой, выборочным UV." },
+  { icon: "CupSoda", title: "Обечайка", desc: "Цилиндрическая упаковка для чая, косметики, подарков." },
+  { icon: "Tablets", title: "БАДы", desc: "Картонная упаковка с маркировкой, штрихкодами и серийными номерами." },
+  { icon: "Package", title: "Гофрокороба малых тиражей", desc: "От 1000 шт. — под заказ. Уточняйте у менеджера.", badge: "Под заказ" },
 ];
 
 const GALLERY_IMAGES = [
@@ -77,6 +77,32 @@ const GALLERY_IMAGES = [
   { url: HERO_IMAGE, caption: "Упаковка для кондитерских изделий" },
   { url: HERO_IMAGE, caption: "Благодарственное письмо от клиента" },
 ];
+
+type PortfolioProject = {
+  id: number;
+  category: string;
+  title: string;
+  volume: string;
+  material: string;
+  deadline: string;
+  format: string;
+  density: string;
+  printType: string;
+  result: string;
+  img: string;
+};
+
+const PORTFOLIO_PROJECTS: PortfolioProject[] = [
+  { id: 1, category: "Фастфуд", title: "Крафт-пакет с логотипом", volume: "50 000 шт.", material: "Крафт-бумага 120 г/м²", deadline: "4 дня", format: "330×200×100 мм", density: "120 г/м²", printType: "Офсетная 4+0", result: "Акция запущена вовремя, продажи +23%" , img: HERO_IMAGE },
+  { id: 2, category: "Кондитерские", title: "Коробка под торт с окном", volume: "10 000 шт.", material: "Мелованный картон 350 г/м²", deadline: "5 дней", format: "250×250×120 мм", density: "350 г/м²", printType: "Офсет 4+0 + лак", result: "Постоянный клиент, 3 повторных заказа", img: HERO_IMAGE },
+  { id: 3, category: "Бакалея", title: "Коробка для чая (80 пакетиков)", volume: "20 000 шт.", material: "Картон FBB 300 г/м²", deadline: "6 дней", format: "160×100×80 мм", density: "300 г/м²", printType: "Офсет 4+4 + матовая ламинация", result: "Выход на федеральные сети", img: HERO_IMAGE },
+  { id: 4, category: "Фармацевтика", title: "Пачка для капсул (ГОСТ)", volume: "100 000 шт.", material: "Мелованный картон 260 г/м²", deadline: "7 дней", format: "110×40×30 мм", density: "260 г/м²", printType: "Офсет 4+4, сериализация", result: "Регистрация препарата в Росздравнадзоре", img: HERO_IMAGE },
+  { id: 5, category: "Косметика", title: "Обечайка для крема с тиснением", volume: "5 000 шт.", material: "Мелованный картон 400 г/м²", deadline: "8 дней", format: "Диаметр 80 мм, высота 120 мм", density: "400 г/м²", printType: "Офсет + тиснение золото + выборочный UV", result: "Премиум-линейка, рост среднего чека на 18%", img: HERO_IMAGE },
+  { id: 6, category: "Бытовая химия", title: "Коробка под стиральный порошок", volume: "30 000 шт.", material: "Картон с влагостойкой ламинацией", deadline: "5 дней", format: "280×180×90 мм", density: "320 г/м²", printType: "Офсет 4+0 + глянцевая ламинация", result: "Размещение в розничных сетях Москвы", img: HERO_IMAGE },
+  { id: 7, category: "БАДы", title: "Картонная упаковка для витаминов", volume: "15 000 шт.", material: "Мелованный картон 300 г/м²", deadline: "5 дней", format: "120×60×40 мм", density: "300 г/м²", printType: "Офсет 4+4 + матовая ламинация + штрихкод", result: "Успешный запуск на маркетплейсах", img: HERO_IMAGE },
+];
+
+const PORTFOLIO_CATEGORIES = ["Все", "Фастфуд", "Кондитерские", "Бакалея", "Фармацевтика", "Косметика", "Бытовая химия", "БАДы"];
 
 const REVIEWS = [
   { initial: "А", name: "Алексей М.", role: "Маркетинг-директор, FMCG", date: "март 2025", text: "Заказывали каталоги срочно — за 3 дня до выставки. Сделали без вопросов, качество идеальное. Теперь работаем только с ними.", stars: 5 },
@@ -88,7 +114,7 @@ const REVIEWS = [
 ];
 
 const FAQS = [
-  { q: "Какой минимальный тираж?", a: "От 5 000 экземпляров. Для гофрокороб — от 1 000 шт. (уточняйте)." },
+  { q: "Какой минимальный тираж?", a: "От 5 000 экземпляров. Для гофрокороба — от 1 000 шт. (уточняйте)." },
   { q: "Сколько стоит цветопроба?", a: "Цветопроба — бесплатно. Вы утверждаете цвет до запуска тиража." },
   { q: "Какой срок производства?", a: "Стандартный срок — 5 дней. При срочном заказе уточняйте у менеджера." },
   { q: "Нужен ли готовый макет?", a: "Нет. Наш дизайнер поможет разработать макет. Это услуга, стоимость уточняется." },
@@ -97,15 +123,15 @@ const FAQS = [
 ];
 
 const QUIZ_PRODUCTS = [
-  { emoji: "🍔", label: "Фастфуд и продукты" },
-  { emoji: "🍰", label: "Кондитерские изделия" },
-  { emoji: "🌾", label: "Крупы, чай, кофе" },
-  { emoji: "🧴", label: "Бытовая химия" },
-  { emoji: "💊", label: "Фармацевтика" },
-  { emoji: "💄", label: "Косметика и парфюм" },
-  { emoji: "🥁", label: "Обечайка" },
-  { emoji: "💊", label: "БАДы" },
-  { emoji: "❓", label: "Другое" },
+  { icon: "Sandwich", label: "Фастфуд и продукты" },
+  { icon: "Cake", label: "Кондитерские изделия" },
+  { icon: "ShoppingBasket", label: "Крупы, чай, кофе" },
+  { icon: "Droplets", label: "Бытовая химия" },
+  { icon: "Pill", label: "Фармацевтика" },
+  { icon: "Sparkles", label: "Косметика и парфюм" },
+  { icon: "CupSoda", label: "Обечайка" },
+  { icon: "Tablets", label: "БАДы" },
+  { icon: "CircleHelp", label: "Другое" },
 ];
 
 function StyledInput({ placeholder, type = "text", value, onChange, error, onFocus, onBlur }: {
@@ -188,32 +214,63 @@ function CallbackModal({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.85)" }}>
-      <div className="relative w-full max-w-lg rounded-2xl p-8" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}>
-        <button onClick={onClose} className="absolute top-4 right-4 transition-colors" style={{ color: "var(--c-muted)" }}>
+      <div className="relative w-full max-w-2xl rounded-2xl overflow-hidden" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}>
+        <button onClick={onClose} className="absolute top-4 right-4 z-10 transition-colors" style={{ color: "var(--c-muted)" }}>
           <Icon name="X" size={22} />
         </button>
         {!sent ? (
-          <>
-            <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Перезвоните мне</h3>
-            <p className="mb-6 text-sm" style={{ color: "var(--c-muted)" }}>Оставьте контакты — ответим на любой вопрос о тираже.</p>
-            <div className="flex flex-col gap-3">
-              <StyledInput placeholder="Ваше имя" value={name} onChange={setName} error={errors.name} />
-              {errors.name && <span className="text-xs text-red-400 -mt-2">Введите имя (минимум 2 символа)</span>}
-              <PhoneInput value={phone} onChange={setPhone} error={errors.phone} />
-              {errors.phone && <span className="text-xs text-red-400 -mt-2">Введите корректный номер телефона</span>}
-              <textarea rows={3} placeholder="Комментарий (необязательно)" value={comment}
-                onChange={e => setComment(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl outline-none resize-none text-sm"
-                style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)", color: "var(--c-text)" }} />
-              <FileInput onChange={() => {}} />
-              <PrivacyCheck checked={privacy} onChange={setPrivacy} error={errors.privacy} />
-              {errors.privacy && <span className="text-xs text-red-400 -mt-2">Необходимо ваше согласие</span>}
+          <div className="grid md:grid-cols-2">
+            {/* Left — contacts */}
+            <div className="p-8 flex flex-col justify-between" style={{ background: "var(--c-bg)", borderRight: "1px solid var(--c-border)" }}>
+              <div>
+                <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>СВЯЗАТЬСЯ С НАМИ</div>
+                <h3 className="text-xl font-black mb-6" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Перезвоните<br />мне</h3>
+                <div className="flex flex-col gap-4">
+                  <a href="tel:+74950000000" className="flex items-center gap-3 group" style={{ color: "var(--c-text)", textDecoration: "none" }}>
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,107,0,0.1)" }}>
+                      <Icon name="Phone" size={18} style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+                    </div>
+                    <div>
+                      <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>Телефон</div>
+                      <div className="font-semibold text-sm group-hover:underline">+7 (495) 000-00-00</div>
+                    </div>
+                  </a>
+                  <a href="mailto:info@pkzapad.ru" className="flex items-center gap-3 group" style={{ color: "var(--c-text)", textDecoration: "none" }}>
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,107,0,0.1)" }}>
+                      <Icon name="Mail" size={18} style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+                    </div>
+                    <div>
+                      <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>Email</div>
+                      <div className="font-semibold text-sm group-hover:underline">info@pkzapad.ru</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <p className="text-xs mt-6" style={{ color: "var(--c-muted)" }}>Работаем 9:00–18:00 МСК (Пн–Пт). Ответим за 30 минут.</p>
             </div>
-            <button onClick={submit} className="w-full mt-5 py-3 rounded-xl font-bold text-black transition-all hover:opacity-90"
-              style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em" }}>
-              ОТПРАВИТЬ
-            </button>
-          </>
+            {/* Right — form */}
+            <div className="p-8">
+              <h3 className="text-xl font-bold mb-2" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Оставьте заявку</h3>
+              <p className="mb-6 text-sm" style={{ color: "var(--c-muted)" }}>Изучим ваш макет и поможем сэкономить до 20% на заказе.</p>
+              <div className="flex flex-col gap-3">
+                <StyledInput placeholder="Ваше имя" value={name} onChange={setName} error={errors.name} />
+                {errors.name && <span className="text-xs text-red-400 -mt-2">Введите имя (минимум 2 символа)</span>}
+                <PhoneInput value={phone} onChange={setPhone} error={errors.phone} />
+                {errors.phone && <span className="text-xs text-red-400 -mt-2">Введите корректный номер телефона</span>}
+                <textarea rows={3} placeholder="Комментарий (необязательно)" value={comment}
+                  onChange={e => setComment(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl outline-none resize-none text-sm"
+                  style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)", color: "var(--c-text)" }} />
+                <FileInput onChange={() => {}} />
+                <PrivacyCheck checked={privacy} onChange={setPrivacy} error={errors.privacy} />
+                {errors.privacy && <span className="text-xs text-red-400 -mt-2">Необходимо ваше согласие</span>}
+              </div>
+              <button onClick={submit} className="w-full mt-5 py-3 rounded-xl font-bold text-black transition-all hover:opacity-90"
+                style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em" }}>
+                ОТПРАВИТЬ
+              </button>
+            </div>
+          </div>
         ) : (
           <div className="text-center py-4">
             <div className="text-5xl mb-4">✅</div>
@@ -303,7 +360,9 @@ function QuizModal({ onClose }: { onClose: () => void }) {
                   style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)", color: "var(--c-text)" }}
                   onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--c-accent)"; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--c-border)"; }}>
-                  <span className="text-3xl">{p.emoji}</span>
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: "rgba(255,107,0,0.1)" }}>
+                    <Icon name={p.icon as AnyIcon} size={22} fallback="Package" style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+                  </div>
                   <span className="text-xs font-medium leading-tight">{p.label}</span>
                 </button>
               ))}
@@ -315,16 +374,27 @@ function QuizModal({ onClose }: { onClose: () => void }) {
           <>
             <h3 className="text-xl font-bold mb-6" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Какой тираж вы планируете?</h3>
             <div className="flex flex-col gap-3">
-              {["До 1 000 шт.", "от 1 000 до 5 000 шт.", "5 000 – 20 000 шт.", "20 000 – 100 000 шт.", "Более 100 000 шт."].map(opt => (
-                <button key={opt} onClick={() => handleVolume(opt)}
-                  className="text-left px-5 py-3 rounded-xl font-medium transition-all hover:scale-[1.02]"
+              {[
+                { label: "До 1 000 шт.", icon: "Hash" },
+                { label: "от 1 000 до 5 000 шт.", icon: "BarChart2" },
+                { label: "5 000 – 20 000 шт.", icon: "TrendingUp" },
+                { label: "20 000 – 100 000 шт.", icon: "Layers" },
+                { label: "Более 100 000 шт.", icon: "Zap" },
+              ].map(opt => (
+                <button key={opt.label} onClick={() => handleVolume(opt.label)}
+                  className="flex items-center gap-3 text-left px-5 py-3 rounded-xl font-medium transition-all hover:scale-[1.02]"
                   style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)", color: "var(--c-text)" }}
                   onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--c-accent)"; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--c-border)"; }}>
-                  {opt}
+                  <Icon name={opt.icon as AnyIcon} size={18} style={{ color: "var(--c-accent)", flexShrink: 0 } as React.CSSProperties} />
+                  {opt.label}
                 </button>
               ))}
             </div>
+            <button onClick={() => setStep(0)} className="mt-4 flex items-center gap-2 text-sm transition-colors hover:opacity-80" style={{ color: "var(--c-muted)" }}>
+              <Icon name="ChevronLeft" size={16} />
+              Назад
+            </button>
           </>
         )}
 
@@ -332,16 +402,25 @@ function QuizModal({ onClose }: { onClose: () => void }) {
           <>
             <h3 className="text-xl font-bold mb-6" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Есть ли у вас готовый макет?</h3>
             <div className="flex flex-col gap-3">
-              {["Да, есть макет", "Нет, нужна разработка", "Только идея"].map(opt => (
-                <button key={opt} onClick={() => handleDesign(opt)}
-                  className="text-left px-5 py-3 rounded-xl font-medium transition-all hover:scale-[1.02]"
+              {[
+                { label: "Да, есть макет", icon: "FileCheck" },
+                { label: "Нет, нужна разработка", icon: "Pencil" },
+                { label: "Только идея", icon: "Lightbulb" },
+              ].map(opt => (
+                <button key={opt.label} onClick={() => handleDesign(opt.label)}
+                  className="flex items-center gap-3 text-left px-5 py-3 rounded-xl font-medium transition-all hover:scale-[1.02]"
                   style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)", color: "var(--c-text)" }}
                   onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--c-accent)"; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--c-border)"; }}>
-                  {opt}
+                  <Icon name={opt.icon as AnyIcon} size={18} style={{ color: "var(--c-accent)", flexShrink: 0 } as React.CSSProperties} />
+                  {opt.label}
                 </button>
               ))}
             </div>
+            <button onClick={() => setStep(1)} className="mt-4 flex items-center gap-2 text-sm transition-colors hover:opacity-80" style={{ color: "var(--c-muted)" }}>
+              <Icon name="ChevronLeft" size={16} />
+              Назад
+            </button>
           </>
         )}
 
@@ -363,6 +442,10 @@ function QuizModal({ onClose }: { onClose: () => void }) {
                 </button>
               ))}
             </div>
+            <button onClick={() => setStep(2)} className="mt-4 flex items-center gap-2 text-sm transition-colors hover:opacity-80" style={{ color: "var(--c-muted)" }}>
+              <Icon name="ChevronLeft" size={16} />
+              Назад
+            </button>
           </>
         )}
 
@@ -426,6 +509,8 @@ export default function Index() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [galleryIdx, setGalleryIdx] = useState<number | null>(null);
+  const [portfolioCat, setPortfolioCat] = useState("Все");
+  const [portfolioModal, setPortfolioModal] = useState<PortfolioProject | null>(null);
 
   const [conName, setConName] = useState("");
   const [conPhone, setConPhone] = useState("");
@@ -466,11 +551,12 @@ export default function Index() {
         style={{ background: scrolled ? "rgba(14,14,16,0.96)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? "1px solid var(--c-border)" : "none" }}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 gap-4">
           <div className="flex items-center gap-4 min-w-0">
-            <div className="font-bold text-xl tracking-wider flex-shrink-0" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-accent)" }}>
-              ПК<span style={{ color: "var(--c-text)" }}>ЗАПАД</span>
+            <div className="flex-shrink-0 rounded-lg overflow-hidden" style={{ background: "rgba(0,0,0,0.55)", padding: "4px 8px" }}>
+              <img src="https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/bucket/8e242036-f301-496c-a31e-6ff645298a3f.png" alt="ПК Запад" style={{ height: "36px", width: "auto", display: "block" }} />
             </div>
-            <div className="hidden lg:block text-xs leading-tight" style={{ color: "var(--c-muted)", maxWidth: "260px" }}>
-              Надёжная офсетная типография полного цикла в Москве
+            <div className="hidden lg:flex flex-col text-xs leading-tight" style={{ color: "var(--c-muted)" }}>
+              <span>Надёжная офсетная типография</span>
+              <span>полного цикла в Москве</span>
             </div>
           </div>
           <div className="hidden md:flex items-center gap-6">
@@ -523,16 +609,17 @@ export default function Index() {
               Собственное производство · Москва
             </div>
 
-            <h1 className="font-black leading-tight mb-3"
-              style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 5vw, 4rem)", letterSpacing: "-0.01em", color: "var(--c-text)" }}>
-              Печать упаковки для любой продукции
+            <h1 className="font-black leading-tight mb-2"
+              style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2.2rem, 5.5vw, 4.5rem)", letterSpacing: "-0.01em", color: "var(--c-text)" }}>
+              Производство и печать упаковки
             </h1>
+            <h2 className="font-black leading-tight mb-3"
+              style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(1.6rem, 4vw, 3.2rem)", letterSpacing: "-0.01em", color: "var(--c-text)" }}>
+              от <span style={{ color: "var(--c-accent)" }}>5 000 шт.</span> в Москве за <span style={{ color: "var(--c-accent)" }}>5 дней</span>
+            </h2>
 
-            <p className="mb-6 font-medium" style={{ color: "var(--c-muted)", fontSize: "clamp(1rem, 2vw, 1.2rem)", lineHeight: 1.6, maxWidth: "560px" }}>
-              <span style={{ color: "var(--c-accent)", fontWeight: 700 }}>от 5 000 шт.</span>{" "}
-              <span style={{ color: "var(--c-accent)", fontWeight: 700 }}>в Москве</span>{" "}
-              с гарантией качества и сроков —{" "}
-              <strong style={{ color: "var(--c-text)" }}>на 15% ниже рынка за 5 дней</strong>
+            <p className="mb-6 font-medium" style={{ color: "var(--c-muted)", fontSize: "clamp(0.95rem, 1.8vw, 1.1rem)", lineHeight: 1.6, maxWidth: "560px" }}>
+              с гарантией качества и соблюдения сроков
             </p>
 
             <div className="flex flex-wrap gap-3 mb-10">
@@ -554,8 +641,8 @@ export default function Index() {
                 style={{ background: "transparent", border: "2px solid var(--c-border)", color: "var(--c-text)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--c-accent)"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--c-border)"; }}>
-                <Icon name="Phone" size={20} />
-                ПЕРЕЗВОНИТЕ МНЕ
+                <Icon name="Package" size={20} />
+                ПОЛУЧИТЬ ОБРАЗЦЫ
               </button>
             </div>
           </div>
@@ -639,7 +726,9 @@ export default function Index() {
                     {item.badge}
                   </span>
                 )}
-                <div className="text-4xl mb-4">{item.emoji}</div>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ background: "rgba(255,107,0,0.12)" }}>
+                  <Icon name={item.icon as AnyIcon} size={26} fallback="Package" style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+                </div>
                 <h3 className="font-bold mb-2" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>{item.title}</h3>
                 <p className="text-sm" style={{ color: "var(--c-muted)", lineHeight: 1.6 }}>{item.desc}</p>
               </div>
@@ -657,68 +746,186 @@ export default function Index() {
         </div>
       </section>
 
-      {/* GALLERY */}
-      <section id="gallery" className="py-20" style={{ background: "var(--c-bg)" }}>
+      {/* PORTFOLIO GALLERY */}
+      <section id="works" className="py-20" style={{ background: "var(--c-bg)" }}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-12">
-            <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>НАШИ РАБОТЫ</div>
-            <h2 className="font-black mb-4" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
-              Портфолио и<br /><span style={{ color: "var(--c-accent)" }}>благодарности</span>
+          <div className="mb-10">
+            <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>ПОРТФОЛИО</div>
+            <h2 className="font-black mb-3" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
+              Реальные проекты от сетей<br /><span style={{ color: "var(--c-accent)" }}>фастфуда и производителей</span>
             </h2>
-          </div>
-
-          {/* CASE */}
-          <div className="rounded-2xl p-8 mb-10" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}>
-            <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>КЕЙС</div>
-            <h3 className="font-black mb-6" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(1.3rem, 2.5vw, 2rem)", color: "var(--c-text)" }}>
-              Как мы напечатали 50 000 крафт-пакетов для сети фастфуда за 4 дня
-            </h3>
-            <p className="mb-6 text-base" style={{ color: "var(--c-muted)" }}>
-              Сеть запускала новую акцию «Двойной бургер». Нужно было 50 000 пакетов с ярким дизайном и плотностью бумаги 120 г/м². Срок — 4 дня.
+            <p className="text-sm mb-8 flex items-center gap-2" style={{ color: "var(--c-muted)" }}>
+              <Icon name="Lock" size={14} />
+              При личной встрече покажем ещё 20+ проектов, которые нельзя публиковать в открытом доступе.
             </p>
-            <div className="grid sm:grid-cols-3 gap-4 mb-6">
-              {[
-                { icon: "CheckCircle", text: "За 1 день утвердили цветопробу" },
-                { icon: "Layers", text: "Печатали на двух линиях параллельно" },
-                { icon: "Truck", text: "Своя доставка к утру пятого дня" },
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3 p-4 rounded-xl" style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)" }}>
-                  <Icon name={item.icon as AnyIcon} size={18} style={{ color: "var(--c-accent)", flexShrink: 0, marginTop: 2 } as React.CSSProperties} />
-                  <span className="text-sm" style={{ color: "var(--c-text)" }}>{item.text}</span>
-                </div>
+            <div className="flex flex-wrap gap-2">
+              {PORTFOLIO_CATEGORIES.map(cat => (
+                <button key={cat} onClick={() => setPortfolioCat(cat)}
+                  className="px-4 py-2 rounded-full text-sm font-semibold transition-all"
+                  style={{
+                    background: portfolioCat === cat ? "var(--c-accent)" : "var(--c-surface)",
+                    color: portfolioCat === cat ? "#000" : "var(--c-muted)",
+                    border: `1px solid ${portfolioCat === cat ? "var(--c-accent)" : "var(--c-border)"}`,
+                  }}>
+                  {cat}
+                </button>
               ))}
             </div>
-            <div className="flex items-center gap-4 p-4 rounded-xl mb-6" style={{ background: "rgba(255,107,0,0.08)", border: "1px solid rgba(255,107,0,0.2)" }}>
-              <Icon name="TrendingUp" size={28} style={{ color: "var(--c-accent)", flexShrink: 0 } as React.CSSProperties} />
-              <div>
-                <div className="font-black text-xl" style={{ color: "var(--c-accent)" }}>+23% к продажам</div>
-                <div className="text-sm" style={{ color: "var(--c-muted)" }}>Акция стартовала вовремя. Клиент выдал благодарственное письмо.</div>
-              </div>
-            </div>
-            <p className="text-sm flex items-center gap-2" style={{ color: "var(--c-muted)" }}>
-              <Icon name="ShieldCheck" size={14} />
-              Имена клиента не называем, но факт подтверждаем — смотри фото грамоты ниже
-            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-4">
-            {GALLERY_IMAGES.map((img, i) => (
-              <div key={i} className="relative rounded-2xl overflow-hidden cursor-pointer group"
-                style={{ aspectRatio: "4/3", border: "1px solid var(--c-border)" }}
-                onClick={() => setGalleryIdx(i)}>
-                <img src={img.url} alt={img.caption} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 flex items-end p-4"
-                  style={{ background: "linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 60%)" }}>
-                  <span className="text-sm font-medium" style={{ color: "#fff" }}>{img.caption}</span>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {PORTFOLIO_PROJECTS.filter(p => portfolioCat === "Все" || p.category === portfolioCat).map(p => (
+              <div key={p.id} className="rounded-2xl overflow-hidden cursor-pointer group transition-all duration-300 hover:scale-[1.02]"
+                style={{ border: "1px solid var(--c-border)", background: "var(--c-surface)" }}
+                onClick={() => setPortfolioModal(p)}>
+                <div className="relative" style={{ aspectRatio: "4/3" }}>
+                  <img src={p.img} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 flex items-start p-3">
+                    <span className="px-2 py-1 rounded-md text-xs font-bold" style={{ background: "rgba(255,107,0,0.85)", color: "#000" }}>{p.category}</span>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    style={{ background: "rgba(255,107,0,0.2)" }}>
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: "rgba(255,107,0,0.9)" }}>
+                      <Icon name="ZoomIn" size={20} style={{ color: "#000" } as React.CSSProperties} />
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center" style={{ background: "rgba(0,0,0,0.35)" }}>
+                    <span className="px-3 py-1 rounded-full text-xs font-bold border" style={{ background: "rgba(0,0,0,0.5)", color: "rgba(255,255,255,0.7)", borderColor: "rgba(255,255,255,0.3)" }}>ПРИМЕР</span>
+                  </div>
                 </div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                  style={{ background: "rgba(255,107,0,0.15)" }}>
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: "rgba(255,107,0,0.8)" }}>
-                    <Icon name="ZoomIn" size={20} style={{ color: "#000" } as React.CSSProperties} />
+                <div className="p-4">
+                  <h3 className="font-bold text-sm mb-2" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>{p.title}</h3>
+                  <div className="flex flex-col gap-1 text-xs" style={{ color: "var(--c-muted)" }}>
+                    <span>Тираж: <strong style={{ color: "var(--c-text)" }}>{p.volume}</strong></span>
+                    <span>Материал: <strong style={{ color: "var(--c-text)" }}>{p.material}</strong></span>
+                    <span>Срок: <strong style={{ color: "var(--c-accent)" }}>{p.deadline}</strong></span>
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {portfolioModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.92)" }}
+            onClick={() => setPortfolioModal(null)}>
+            <div className="relative w-full max-w-2xl rounded-2xl overflow-hidden" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}
+              onClick={e => e.stopPropagation()}>
+              <button onClick={() => setPortfolioModal(null)} className="absolute top-4 right-4 z-10 transition-colors" style={{ color: "var(--c-muted)" }}>
+                <Icon name="X" size={22} />
+              </button>
+              <div className="relative" style={{ aspectRatio: "16/7" }}>
+                <img src={portfolioModal.img} alt={portfolioModal.title} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 flex items-center justify-center" style={{ background: "rgba(0,0,0,0.35)" }}>
+                  <span className="px-4 py-2 rounded-full text-sm font-bold border" style={{ background: "rgba(0,0,0,0.5)", color: "rgba(255,255,255,0.7)", borderColor: "rgba(255,255,255,0.3)" }}>ПРИМЕР</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <span className="inline-block px-2 py-1 rounded-md text-xs font-bold mb-3" style={{ background: "rgba(255,107,0,0.15)", color: "var(--c-accent)", border: "1px solid rgba(255,107,0,0.3)" }}>{portfolioModal.category}</span>
+                <h3 className="font-black text-2xl mb-5" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>{portfolioModal.title}</h3>
+                <div className="grid grid-cols-2 gap-3 mb-5">
+                  {[
+                    { label: "Тираж", val: portfolioModal.volume },
+                    { label: "Срок", val: portfolioModal.deadline },
+                    { label: "Формат", val: portfolioModal.format },
+                    { label: "Плотность", val: portfolioModal.density },
+                    { label: "Вид печати", val: portfolioModal.printType },
+                    { label: "Материал", val: portfolioModal.material },
+                  ].map((item, i) => (
+                    <div key={i} className="p-3 rounded-xl" style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)" }}>
+                      <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>{item.label}</div>
+                      <div className="text-sm font-semibold" style={{ color: "var(--c-text)" }}>{item.val}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-start gap-3 p-4 rounded-xl mb-5" style={{ background: "rgba(255,107,0,0.08)", border: "1px solid rgba(255,107,0,0.2)" }}>
+                  <Icon name="TrendingUp" size={20} style={{ color: "var(--c-accent)", flexShrink: 0, marginTop: 2 } as React.CSSProperties} />
+                  <div>
+                    <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>Результат</div>
+                    <div className="text-sm font-semibold" style={{ color: "var(--c-text)" }}>{portfolioModal.result}</div>
+                  </div>
+                </div>
+                <button onClick={() => { setPortfolioModal(null); setQuizOpen(true); }}
+                  className="w-full py-4 rounded-xl font-bold text-black transition-all hover:opacity-90"
+                  style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em" }}>
+                  МНЕ НУЖНО ТАК ЖЕ →
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+
+      {/* GALLERY */}
+      <section id="gallery" className="py-20" style={{ background: "var(--c-bg)" }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-12">
+            <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>КЕЙСЫ</div>
+            <h2 className="font-black mb-4" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
+              Кейсы и<br /><span style={{ color: "var(--c-accent)" }}>благодарности</span>
+            </h2>
+          </div>
+
+          {/* CASE — horizontal */}
+          <div className="rounded-2xl overflow-hidden mb-10" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}>
+            <div className="grid md:grid-cols-2">
+              {/* Left — text */}
+              <div className="p-8 flex flex-col justify-between">
+                <div>
+                  <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>КЕЙС</div>
+                  <h3 className="font-black mb-4" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(1.2rem, 2.5vw, 1.8rem)", color: "var(--c-text)" }}>
+                    Как мы напечатали 50 000 крафт-пакетов для сети фастфуда за 4 дня
+                  </h3>
+                  <p className="mb-5 text-sm" style={{ color: "var(--c-muted)", lineHeight: 1.7 }}>
+                    Сеть запускала новую акцию «Двойной бургер». Нужно было 50 000 пакетов с ярким дизайном и плотностью бумаги 120 г/м². Срок — 4 дня.
+                  </p>
+                  <div className="flex flex-col gap-3 mb-5">
+                    {[
+                      { icon: "CheckCircle", text: "За 1 день утвердили цветопробу" },
+                      { icon: "Layers", text: "Печатали на двух линиях параллельно" },
+                      { icon: "Truck", text: "Своя доставка к утру пятого дня" },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-3">
+                        <Icon name={item.icon as AnyIcon} size={16} style={{ color: "var(--c-accent)", flexShrink: 0 } as React.CSSProperties} />
+                        <span className="text-sm" style={{ color: "var(--c-text)" }}>{item.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center gap-3 p-4 rounded-xl mb-4" style={{ background: "rgba(255,107,0,0.08)", border: "1px solid rgba(255,107,0,0.2)" }}>
+                    <Icon name="TrendingUp" size={24} style={{ color: "var(--c-accent)", flexShrink: 0 } as React.CSSProperties} />
+                    <div>
+                      <div className="font-black text-lg" style={{ color: "var(--c-accent)" }}>+23% к продажам</div>
+                      <div className="text-xs" style={{ color: "var(--c-muted)" }}>Акция стартовала вовремя. Клиент выдал благодарственное письмо.</div>
+                    </div>
+                  </div>
+                  <p className="text-xs flex items-center gap-2" style={{ color: "var(--c-muted)" }}>
+                    <Icon name="ShieldCheck" size={12} />
+                    Имена клиента не называем, но факт подтверждаем — смотри фото грамоты
+                  </p>
+                </div>
+              </div>
+              {/* Right — gallery */}
+              <div className="grid grid-cols-2 gap-0">
+                {GALLERY_IMAGES.map((img, i) => (
+                  <div key={i} className={`relative overflow-hidden cursor-pointer group ${i === 0 ? "col-span-2" : ""}`}
+                    style={{ aspectRatio: i === 0 ? "16/7" : "4/3" }}
+                    onClick={() => setGalleryIdx(i)}>
+                    <img src={img.url} alt={img.caption} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div className="absolute inset-0 flex items-end p-3" style={{ background: "linear-gradient(0deg, rgba(0,0,0,0.6) 0%, transparent 60%)" }}>
+                      <span className="text-xs font-medium" style={{ color: "#fff" }}>{img.caption}</span>
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                      style={{ background: "rgba(255,107,0,0.15)" }}>
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "rgba(255,107,0,0.8)" }}>
+                        <Icon name="ZoomIn" size={18} style={{ color: "#000" } as React.CSSProperties} />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {galleryIdx !== null && (
@@ -734,11 +941,10 @@ export default function Index() {
       <section id="reviews" className="py-20" style={{ background: "var(--c-surface)" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-12">
-            <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>ОТЗЫВЫ</div>
+            <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>ОТЗЫВЫ КЛИЕНТОВ</div>
             <h2 className="font-black mb-2" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
-              Отзывы клиентов
+              Что говорят<br /><span style={{ color: "var(--c-accent)" }}>наши клиенты</span>
             </h2>
-            <p className="text-lg mb-4" style={{ color: "var(--c-muted)" }}>Что говорят наши клиенты</p>
             <div className="flex items-center gap-3">
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_, j) => <span key={j} className="text-yellow-400 text-xl">★</span>)}
@@ -819,9 +1025,6 @@ export default function Index() {
               <h2 className="font-black mb-8" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
                 Получите консультацию<br /><span style={{ color: "var(--c-accent)" }}>технолога</span>
               </h2>
-              <p className="mb-8 text-sm" style={{ color: "var(--c-muted)", lineHeight: 1.7 }}>
-                Изучим ваш макет и поможем сэкономить до 20% на заказе.
-              </p>
               <div className="flex flex-col gap-4">
                 <a href="tel:+74950000000" className="flex items-center gap-3 group"
                   style={{ color: "var(--c-text)", textDecoration: "none" }}>
@@ -869,7 +1072,7 @@ export default function Index() {
               {!conSent ? (
                 <>
                   <h3 className="font-bold text-xl mb-1" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>
-                    Получите консультацию технолога
+                    Оставьте заявку
                   </h3>
                   <p className="text-sm mb-6" style={{ color: "var(--c-muted)" }}>Изучим ваш макет и поможем сэкономить до 20% на заказе</p>
                   <div className="flex flex-col gap-3">
@@ -909,7 +1112,7 @@ export default function Index() {
         <div className="font-bold text-xl mb-2" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-accent)" }}>
           ПК<span style={{ color: "var(--c-text)" }}>ЗАПАД</span>
         </div>
-        <div className="text-sm" style={{ color: "var(--c-muted)" }}>© 2026 ТКЗапад. Производство упаковки из картона на заказ. Москва.</div>
+        <div className="text-sm" style={{ color: "var(--c-muted)" }}>© 2026 ПКЗапад. Производство упаковки из картона на заказ. Москва.</div>
       </footer>
 
       <style>{`
