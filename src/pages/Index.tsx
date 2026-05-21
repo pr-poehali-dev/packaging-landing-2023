@@ -66,8 +66,8 @@ const PORTFOLIO_ITEMS = [
   { icon: "ShoppingBasket", title: "Крупы, чай, кофе", desc: "Пакеты с zip-lock, коробки, сашетки. Барьерные материалы." },
   { icon: "WashingMachine", title: "Бытовая химия", desc: "Упаковка из плотного картона с ламинацией. Устойчива к влаге." },
   { icon: "Pill", title: "Фармацевтические препараты", desc: "Пачки из мелованного картона по ГОСТ. Сериализация." },
-  { icon: "FlaskConical", title: "Парфюмерия и косметика", desc: "Люксовая упаковка с тиснением, фольгой, выборочным UV." },
-  { icon: "Gem", title: "Обечайка", desc: "Цилиндрическая упаковка для чая, косметики, подарков." },
+  { icon: "FlaskConical", title: "Парфюмерия", desc: "Люксовая упаковка с тиснением, фольгой, выборочным UV." },
+  { icon: "Gem", title: "Косметика", desc: "Картонные тубы и пеналы с матовой или софт-тач ламинацией." },
   { icon: "Container", title: "БАДы", desc: "Картонная упаковка с маркировкой, штрихкодами и серийными номерами." },
   { icon: "Package", title: "Гофрокороба малых тиражей", desc: "От 1000 шт. — под заказ. Уточняйте у менеджера.", badge: "Под заказ" },
 ];
@@ -128,8 +128,8 @@ const QUIZ_PRODUCTS = [
   { icon: "ShoppingBasket", label: "Крупы, чай, кофе" },
   { icon: "WashingMachine", label: "Бытовая химия" },
   { icon: "Pill", label: "Фармацевтика" },
-  { icon: "FlaskConical", label: "Косметика и парфюм" },
-  { icon: "Gem", label: "Обечайка" },
+  { icon: "FlaskConical", label: "Парфюмерия" },
+  { icon: "Gem", label: "Косметика" },
   { icon: "Container", label: "БАДы" },
   { icon: "CircleHelp", label: "Другое" },
 ];
@@ -523,6 +523,8 @@ export default function Index() {
   const [portfolioCat, setPortfolioCat] = useState("Все");
   const [portfolioModal, setPortfolioModal] = useState<PortfolioProject | null>(null);
   const [filterOpen, setFilterOpen] = useState(false);
+  const [portfolioShowAll, setPortfolioShowAll] = useState(false);
+  const portfolioSwipeRef = useRef<HTMLDivElement>(null);
   const [slideIdx, setSlideIdx] = useState(0);
   const [showAllReviews, setShowAllReviews] = useState(false);
 
@@ -757,15 +759,15 @@ export default function Index() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {ADVANTAGES.map((a, i) => (
-              <div key={i} className="p-8 rounded-xl transition-all duration-300"
+              <div key={i} className="p-6 rounded-xl transition-all duration-300"
                 style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ background: "rgba(39,174,96,0.10)" }}>
-                  <Icon name={a.icon as AnyIcon} size={24} fallback="Star" style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "rgba(39,174,96,0.10)" }}>
+                  <Icon name={a.icon as AnyIcon} size={22} fallback="Star" style={{ color: "var(--c-accent)" } as React.CSSProperties} />
                 </div>
-                <h3 className="font-bold text-lg mb-3" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>{a.title}</h3>
-                <p style={{ color: "var(--c-muted)", lineHeight: 1.7 }}>{a.text}</p>
+                <h3 className="font-bold text-sm mb-2" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>{a.title}</h3>
+                <p className="text-sm" style={{ color: "var(--c-muted)", lineHeight: 1.6 }}>{a.text}</p>
               </div>
             ))}
           </div>
@@ -778,24 +780,24 @@ export default function Index() {
           <div className="mb-12">
             <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-accent)" }}>ЧТО МЫ ДЕЛАЕМ</div>
             <h2 className="font-extrabold mb-2" style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--c-text)" }}>
-              Продукция, которую <span style={{ color: "var(--c-accent)" }}>мы печатаем</span>
+              Работаем со всеми <span style={{ color: "var(--c-accent)" }}>видами продукции</span>
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+          <div className="grid grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-5 mb-10">
             {PORTFOLIO_ITEMS.map((item, i) => (
-              <div key={i} className="relative p-6 rounded-xl"
+              <div key={i} className="relative p-3 sm:p-6 rounded-xl"
                 style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}>
                 {item.badge && (
-                  <span className="absolute top-4 right-4 px-2 py-1 rounded text-xs font-bold text-white" style={{ background: "var(--c-blue)" }}>
+                  <span className="absolute top-2 right-2 sm:top-4 sm:right-4 px-1.5 py-0.5 rounded text-xs font-bold text-white" style={{ background: "var(--c-blue)", fontSize: "0.6rem" }}>
                     {item.badge}
                   </span>
                 )}
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ background: "rgba(37,99,235,0.08)" }}>
-                  <Icon name={item.icon as AnyIcon} size={26} fallback="Package" style={{ color: "var(--c-blue)" } as React.CSSProperties} />
+                <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-2 sm:mb-4" style={{ background: "rgba(37,99,235,0.08)" }}>
+                  <Icon name={item.icon as AnyIcon} size={18} fallback="Package" style={{ color: "var(--c-blue)" } as React.CSSProperties} />
                 </div>
-                <h3 className="font-bold mb-2" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>{item.title}</h3>
-                <p className="text-sm" style={{ color: "var(--c-muted)", lineHeight: 1.6 }}>{item.desc}</p>
+                <h3 className="font-bold text-xs sm:text-base mb-1 sm:mb-2 leading-tight" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>{item.title}</h3>
+                <p className="text-xs hidden sm:block" style={{ color: "var(--c-muted)", lineHeight: 1.6 }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -865,7 +867,8 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          {/* Desktop grid */}
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {PORTFOLIO_PROJECTS.filter(p => portfolioCat === "Все" || p.category === portfolioCat).map(p => (
               <div key={p.id} className="rounded-xl overflow-hidden cursor-pointer group transition-all duration-300 hover:shadow-md"
                 style={{ border: "1px solid var(--c-border)", background: "var(--c-surface)", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}
@@ -895,6 +898,74 @@ export default function Index() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Mobile: horizontal swipe per category */}
+          <div className="sm:hidden">
+            {(() => {
+              const filtered = PORTFOLIO_PROJECTS.filter(p => portfolioCat === "Все" || p.category === portfolioCat);
+              const categories = portfolioCat === "Все"
+                ? [...new Set(filtered.map(p => p.category))]
+                : [portfolioCat];
+              const allVisible: PortfolioProject[] = [];
+              const rows = categories.map(cat => {
+                const items = filtered.filter(p => p.category === cat);
+                items.forEach(p => allVisible.push(p));
+                return { cat, items };
+              });
+              const visibleCount = portfolioShowAll ? allVisible.length : Math.min(3, allVisible.length);
+              let shown = 0;
+              return (
+                <>
+                  {rows.map(({ cat, items }) => {
+                    const visibleItems = items.filter(() => {
+                      if (shown >= visibleCount) return false;
+                      shown++;
+                      return true;
+                    });
+                    if (visibleItems.length === 0) return null;
+                    return (
+                      <div key={cat} className="mb-5">
+                        {portfolioCat === "Все" && (
+                          <div className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "var(--c-muted)" }}>{cat}</div>
+                        )}
+                        <div ref={portfolioSwipeRef} className="flex gap-4 overflow-x-auto pb-2" style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}>
+                          {visibleItems.map(p => (
+                            <div key={p.id} className="flex-shrink-0 rounded-xl overflow-hidden cursor-pointer"
+                              style={{ width: "72vw", maxWidth: "280px", border: "1px solid var(--c-border)", background: "var(--c-surface)", scrollSnapAlign: "start" }}
+                              onClick={() => setPortfolioModal(p)}>
+                              <div className="relative" style={{ aspectRatio: "4/3" }}>
+                                <img src={p.img} alt={p.title} className="w-full h-full object-cover" />
+                                <div className="absolute inset-0 flex items-start p-2">
+                                  <span className="px-2 py-0.5 rounded text-xs font-bold text-white" style={{ background: "var(--c-blue-dark)" }}>{p.category}</span>
+                                </div>
+                                <div className="absolute inset-0 flex items-center justify-center" style={{ background: "rgba(0,0,0,0.28)" }}>
+                                  <span className="px-3 py-1 rounded-full text-xs font-bold border" style={{ background: "rgba(0,0,0,0.5)", color: "rgba(255,255,255,0.8)", borderColor: "rgba(255,255,255,0.3)" }}>ПРИМЕР</span>
+                                </div>
+                              </div>
+                              <div className="p-3">
+                                <h3 className="font-bold text-sm mb-1.5" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>{p.title}</h3>
+                                <div className="flex flex-col gap-1 text-xs" style={{ color: "var(--c-muted)" }}>
+                                  <span>Тираж: <strong style={{ color: "var(--c-text)" }}>{p.volume}</strong></span>
+                                  <span>Срок: <strong style={{ color: "var(--c-accent)" }}>{p.deadline}</strong></span>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                  {!portfolioShowAll && allVisible.length > 3 && (
+                    <button onClick={() => setPortfolioShowAll(true)}
+                      className="w-full py-3 rounded-xl font-bold text-sm mt-2"
+                      style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", color: "var(--c-blue)" }}>
+                      Показать ещё ({allVisible.length - 3})
+                    </button>
+                  )}
+                </>
+              );
+            })()}
           </div>
         </div>
 
@@ -957,9 +1028,12 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-12 text-center">
             <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>Кейсы</div>
-            <h2 className="font-extrabold mb-2" style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--c-text)" }}>
-              Истории успеха наших партнёров
+            <h2 className="font-extrabold mb-3" style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--c-text)" }}>
+              Почему нам доверяют уже 28 лет?
             </h2>
+            <p className="text-base" style={{ color: "var(--c-muted)", maxWidth: "560px", margin: "0 auto" }}>
+              Рассказываем на реальном примере, как мы ответственно подходим к печати для наших клиентов
+            </p>
           </div>
 
           {/* CASE — two columns */}
