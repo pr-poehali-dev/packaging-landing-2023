@@ -681,8 +681,7 @@ export default function Index() {
             <div>
               <h1 className="font-extrabold leading-tight mb-3"
                 style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.4rem, 2.4vw, 2.1rem)", letterSpacing: "-0.02em", color: "var(--c-text)" }}>
-                Производство и печать упаковки<br />
-                из картона с вашим логотипом<br />
+                Производство и печать упаковки из картона с вашим логотипом<br />
                 от <span style={{ color: "var(--c-blue)" }}>5 000 шт.</span> в Москве за <span style={{ color: "var(--c-blue)" }}>5 дней</span>
               </h1>
               <p className="mb-5 text-base font-medium" style={{ color: "var(--c-muted)" }}>
