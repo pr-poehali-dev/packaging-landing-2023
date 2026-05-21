@@ -91,12 +91,16 @@
 }
 
 :root {
-  --c-bg: #0e0e10;
-  --c-surface: #16161a;
-  --c-border: #2a2a30;
-  --c-text: #f0f0f2;
-  --c-muted: #8a8a99;
-  --c-accent: #ff6b00;
+  --c-bg: #f5f6f8;
+  --c-surface: #ffffff;
+  --c-border: #e2e5eb;
+  --c-text: #1a2236;
+  --c-muted: #6b7a96;
+  --c-accent: #27ae60;
+  --c-accent-hover: #219d54;
+  --c-blue: #2563eb;
+  --c-blue-dark: #1e3a8a;
+  --c-blue-bg: #1e3a8a;
 }
 
 @layer base {

@@ -213,41 +213,41 @@ function CallbackModal({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.85)" }}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.7)" }}
       onClick={onClose}>
-      <div className="relative w-full rounded-2xl overflow-hidden" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", maxWidth: "420px" }}
+      <div className="relative w-full rounded-xl overflow-hidden" style={{ background: "#fff", border: "1px solid var(--c-border)", maxWidth: "420px", boxShadow: "0 8px 40px rgba(0,0,0,0.15)" }}
         onClick={e => e.stopPropagation()}>
         <button onClick={onClose} className="absolute top-4 right-4 z-10 transition-colors" style={{ color: "var(--c-muted)" }}>
           <Icon name="X" size={22} />
         </button>
         {!sent ? (
           <div className="p-8">
-            <h3 className="text-xl font-bold mb-2" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Оставьте заявку</h3>
+            <h3 className="text-xl font-bold mb-2" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>Оставьте заявку</h3>
             <p className="mb-6 text-sm" style={{ color: "var(--c-muted)" }}>Изучим ваш макет и поможем сэкономить до 20% на заказе.</p>
             <div className="flex flex-col gap-3">
               <StyledInput placeholder="Ваше имя" value={name} onChange={setName} error={errors.name} />
-              {errors.name && <span className="text-xs text-red-400 -mt-2">Введите имя (минимум 2 символа)</span>}
+              {errors.name && <span className="text-xs text-red-500 -mt-2">Введите имя (минимум 2 символа)</span>}
               <PhoneInput value={phone} onChange={setPhone} error={errors.phone} />
-              {errors.phone && <span className="text-xs text-red-400 -mt-2">Введите корректный номер телефона</span>}
+              {errors.phone && <span className="text-xs text-red-500 -mt-2">Введите корректный номер телефона</span>}
               <textarea rows={3} placeholder="Комментарий (необязательно)" value={comment}
                 onChange={e => setComment(e.target.value)}
                 className="w-full px-4 py-3 rounded-xl outline-none resize-none text-sm"
                 style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)", color: "var(--c-text)" }} />
               <FileInput onChange={() => {}} />
               <PrivacyCheck checked={privacy} onChange={setPrivacy} error={errors.privacy} />
-              {errors.privacy && <span className="text-xs text-red-400 -mt-2">Необходимо ваше согласие</span>}
+              {errors.privacy && <span className="text-xs text-red-500 -mt-2">Необходимо ваше согласие</span>}
             </div>
-            <button onClick={submit} className="w-full mt-5 py-3 rounded-xl font-bold text-black transition-all hover:opacity-90"
-              style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em" }}>
+            <button onClick={submit} className="w-full mt-5 py-3 rounded-md font-bold text-white transition-all hover:opacity-90"
+              style={{ background: "var(--c-accent)", fontFamily: "Onest, sans-serif", letterSpacing: "0.05em" }}>
               ОТПРАВИТЬ
             </button>
           </div>
         ) : (
           <div className="text-center py-8 px-8">
-            <h3 className="text-2xl font-bold mb-3" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Заявка принята!</h3>
+            <h3 className="text-2xl font-bold mb-3" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>Заявка принята!</h3>
             <p style={{ color: "var(--c-muted)" }}>Перезвоним вам в течение 30 минут в рабочее время.</p>
-            <button onClick={onClose} className="mt-6 px-8 py-3 rounded-xl font-bold text-black"
-              style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif" }}>Закрыть</button>
+            <button onClick={onClose} className="mt-6 px-8 py-3 rounded-md font-bold text-white"
+              style={{ background: "var(--c-accent)", fontFamily: "Onest, sans-serif" }}>Закрыть</button>
           </div>
         )}
       </div>
@@ -305,9 +305,9 @@ function QuizModal({ onClose }: { onClose: () => void }) {
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.88)" }}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.7)" }}
       onClick={onClose}>
-      <div className="relative w-full max-w-xl rounded-2xl p-8 max-h-[85vh] overflow-y-auto" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}
+      <div className="relative w-full max-w-xl rounded-xl p-8 max-h-[85vh] overflow-y-auto" style={{ background: "#fff", border: "1px solid var(--c-border)", boxShadow: "0 8px 40px rgba(0,0,0,0.15)" }}
         onClick={e => e.stopPropagation()}>
         <button onClick={onClose} className="absolute top-4 right-4 transition-colors" style={{ color: "var(--c-muted)" }}>
           <Icon name="X" size={22} />
@@ -315,7 +315,7 @@ function QuizModal({ onClose }: { onClose: () => void }) {
 
         {!submitted && step < 4 && (
           <>
-            <div className="mb-2 text-xs font-bold" style={{ color: "var(--c-accent)", letterSpacing: "0.1em" }}>ШАГ {step + 1} ИЗ {TOTAL_STEPS}</div>
+            <div className="mb-2 text-xs font-bold" style={{ color: "var(--c-blue)", letterSpacing: "0.1em" }}>ШАГ {step + 1} ИЗ {TOTAL_STEPS}</div>
             <div className="w-full h-1 rounded-full mb-6" style={{ background: "var(--c-border)" }}>
               <div className="h-1 rounded-full transition-all duration-500" style={{ width: `${((step + 1) / TOTAL_STEPS) * 100}%`, background: "var(--c-accent)" }} />
             </div>
@@ -324,7 +324,7 @@ function QuizModal({ onClose }: { onClose: () => void }) {
 
         {!submitted && step === 0 && (
           <>
-            <h3 className="text-xl font-bold mb-6" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Для какого товара нужна упаковка?</h3>
+            <h3 className="text-xl font-bold mb-6" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>Для какого товара нужна упаковка?</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {QUIZ_PRODUCTS.map((p) => (
                 <button key={p.label} onClick={() => handleProduct(p.label)}
@@ -332,8 +332,8 @@ function QuizModal({ onClose }: { onClose: () => void }) {
                   style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)", color: "var(--c-text)" }}
                   onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--c-accent)"; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--c-border)"; }}>
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: "rgba(255,107,0,0.1)" }}>
-                    <Icon name={p.icon as AnyIcon} size={22} fallback="Package" style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: "rgba(37,99,235,0.08)" }}>
+                    <Icon name={p.icon as AnyIcon} size={22} fallback="Package" style={{ color: "var(--c-blue)" } as React.CSSProperties} />
                   </div>
                   <span className="text-xs font-medium leading-tight">{p.label}</span>
                 </button>
@@ -344,7 +344,7 @@ function QuizModal({ onClose }: { onClose: () => void }) {
 
         {!submitted && step === 1 && (
           <>
-            <h3 className="text-xl font-bold mb-6" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Какой тираж вы планируете?</h3>
+            <h3 className="text-xl font-bold mb-6" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>Какой тираж вы планируете?</h3>
             <div className="flex flex-col gap-3">
               {[
                 { label: "До 1 000 шт.", icon: "Hash" },
@@ -372,7 +372,7 @@ function QuizModal({ onClose }: { onClose: () => void }) {
 
         {!submitted && step === 2 && (
           <>
-            <h3 className="text-xl font-bold mb-6" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Есть ли у вас готовый макет?</h3>
+            <h3 className="text-xl font-bold mb-6" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>Есть ли у вас готовый макет?</h3>
             <div className="flex flex-col gap-3">
               {[
                 { label: "Да, есть макет", icon: "FileCheck" },
@@ -398,7 +398,7 @@ function QuizModal({ onClose }: { onClose: () => void }) {
 
         {!submitted && step === 3 && (
           <>
-            <h3 className="text-xl font-bold mb-6" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Какой срок сдачи?</h3>
+            <h3 className="text-xl font-bold mb-6" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>Какой срок сдачи?</h3>
             <div className="flex flex-col gap-3">
               {deadlines.map(d => (
                 <button key={d.label} onClick={() => handleDeadline(d.label)}
@@ -423,25 +423,25 @@ function QuizModal({ onClose }: { onClose: () => void }) {
 
         {!submitted && step === 4 && (
           <>
-            <div className="mb-6 p-4 rounded-xl" style={{ background: "rgba(255,107,0,0.08)", border: "1px solid rgba(255,107,0,0.2)" }}>
-              <p className="font-semibold mb-1" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Почти готово!</p>
+            <div className="mb-6 p-4 rounded-xl" style={{ background: "rgba(39,174,96,0.07)", border: "1px solid rgba(39,174,96,0.2)" }}>
+              <p className="font-semibold mb-1" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>Почти готово!</p>
               <p className="text-sm" style={{ color: "var(--c-muted)" }}>Оставьте контакты и мы пришлём точный расчёт + закрепим <strong style={{ color: "var(--c-accent)" }}>скидку 10%</strong> за вашим первым заказом.</p>
             </div>
             <div className="flex flex-col gap-3">
               <StyledInput placeholder="Ваше имя, например Иван *" value={name} onChange={setName} error={errors.name} />
-              {errors.name && <span className="text-xs text-red-400 -mt-2">Введите имя</span>}
+              {errors.name && <span className="text-xs text-red-500 -mt-2">Введите имя</span>}
               <PhoneInput value={phone} onChange={setPhone} error={errors.phone} />
-              {errors.phone && <span className="text-xs text-red-400 -mt-2">Введите корректный номер</span>}
+              {errors.phone && <span className="text-xs text-red-500 -mt-2">Введите корректный номер</span>}
               <StyledInput placeholder="Email (необязательно)" value={email} onChange={setEmail} />
               <textarea rows={2} placeholder="Комментарий (необязательно)" value={comment}
                 onChange={e => setComment(e.target.value)}
                 className="w-full px-4 py-3 rounded-xl outline-none resize-none text-sm"
                 style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)", color: "var(--c-text)" }} />
               <PrivacyCheck checked={privacy} onChange={setPrivacy} error={errors.privacy} />
-              {errors.privacy && <span className="text-xs text-red-400 -mt-2">Необходимо ваше согласие</span>}
+              {errors.privacy && <span className="text-xs text-red-500 -mt-2">Необходимо ваше согласие</span>}
             </div>
-            <button onClick={submitFinal} className="w-full mt-5 py-3 rounded-xl font-bold text-black transition-all hover:opacity-90"
-              style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em" }}>
+            <button onClick={submitFinal} className="w-full mt-5 py-3 rounded-md font-bold text-white transition-all hover:opacity-90"
+              style={{ background: "var(--c-accent)", fontFamily: "Onest, sans-serif", letterSpacing: "0.05em" }}>
               ПОЛУЧИТЬ РАСЧЁТ СО СКИДКОЙ 10%
             </button>
           </>
@@ -449,7 +449,7 @@ function QuizModal({ onClose }: { onClose: () => void }) {
 
         {submitted && (
           <div className="text-center py-4">
-            <h3 className="text-2xl font-bold mb-3" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Спасибо за заявку!</h3>
+            <h3 className="text-2xl font-bold mb-3" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>Спасибо за заявку!</h3>
             <p className="mb-6 text-sm" style={{ color: "var(--c-muted)" }}>
               Ваша заявка на печать упаковки принята. Менеджер свяжется с вами в течение 1 рабочего часа (с 9 до 18 в будни).
             </p>
@@ -464,8 +464,8 @@ function QuizModal({ onClose }: { onClose: () => void }) {
                 ))}
               </div>
             </div>
-            <button onClick={onClose} className="px-8 py-3 rounded-xl font-bold text-black"
-              style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif" }}>Закрыть</button>
+            <button onClick={onClose} className="px-8 py-3 rounded-md font-bold text-white"
+              style={{ background: "var(--c-accent)", fontFamily: "Onest, sans-serif" }}>Закрыть</button>
           </div>
         )}
       </div>
@@ -522,7 +522,7 @@ export default function Index() {
   };
 
   return (
-    <div style={{ fontFamily: "Golos Text, sans-serif", background: "var(--c-bg)", color: "var(--c-text)", overflowX: "hidden" }}>
+    <div style={{ fontFamily: "Onest, sans-serif", background: "var(--c-bg)", color: "var(--c-text)", overflowX: "hidden" }}>
       {quizOpen && <QuizModal onClose={() => setQuizOpen(false)} />}
       {callbackOpen && <CallbackModal onClose={() => setCallbackOpen(false)} />}
 
@@ -536,43 +536,59 @@ export default function Index() {
           </button>
         )}
         <button onClick={() => setCallbackOpen(true)}
-          className="flex items-center gap-2 px-4 py-3 rounded-full shadow-lg font-bold text-sm text-black transition-all hover:scale-105"
-          style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.03em" }}>
-          <Icon name="MessageCircle" size={18} style={{ color: "#000" } as React.CSSProperties} />
-          <span className="hidden sm:inline">Обратная связь</span>
+          className="flex items-center gap-2 px-4 py-3 rounded-full shadow-lg font-bold text-sm transition-all hover:scale-105"
+          style={{ background: "var(--c-accent)", fontFamily: "Onest, sans-serif", letterSpacing: "0.03em", color: "#fff" }}>
+          <Icon name="MessageCircle" size={18} style={{ color: "#fff" } as React.CSSProperties} />
+          <span className="hidden sm:inline">Получить консультацию</span>
         </button>
       </div>
 
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-40 transition-all duration-300"
-        style={{ background: scrolled ? "rgba(14,14,16,0.96)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? "1px solid var(--c-border)" : "none" }}>
+        style={{ background: "#fff", boxShadow: scrolled ? "0 2px 12px rgba(0,0,0,0.10)" : "0 1px 0 var(--c-border)" }}>
+        {/* Top bar */}
+        <div style={{ background: "var(--c-blue-dark)", padding: "6px 0" }}>
+          <div className="max-w-7xl mx-auto px-6 flex items-center justify-between text-xs" style={{ color: "rgba(255,255,255,0.85)" }}>
+            <div className="hidden sm:flex items-center gap-4">
+              <span className="flex items-center gap-1.5"><Icon name="MapPin" size={12} />г. Москва, ул. Горбунова, 2</span>
+              <span className="flex items-center gap-1.5"><Icon name="Clock" size={12} />9:00 – 18:00 МСК</span>
+            </div>
+            <div className="flex items-center gap-4 ml-auto">
+              <a href="mailto:info@pkzapad.ru" className="flex items-center gap-1.5 hover:text-white transition-colors" style={{ color: "rgba(255,255,255,0.85)" }}>
+                <Icon name="Mail" size={12} />info@pkzapad.ru
+              </a>
+              <a href="tel:+74950000000" className="flex items-center gap-1.5 font-semibold hover:text-white transition-colors" style={{ color: "#fff" }}>
+                <Icon name="Phone" size={12} />8 (495) 000-00-00
+              </a>
+              <span className="hidden md:flex items-center gap-1.5" style={{ color: "var(--c-accent)" }}>
+                <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "var(--c-accent)", display: "inline-block" }} />
+                Звоните, мы работаем
+              </span>
+            </div>
+          </div>
+        </div>
+        {/* Main nav */}
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 gap-4">
           <div className="flex items-center gap-4 min-w-0">
-            <div className="flex-shrink-0 rounded-lg overflow-hidden" style={{ background: "rgba(0,0,0,0.55)", padding: "4px 8px" }}>
+            <div className="flex-shrink-0 rounded-lg overflow-hidden" style={{ padding: "4px 0" }}>
               <img src="https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/bucket/8e242036-f301-496c-a31e-6ff645298a3f.png" alt="ПК Запад" style={{ height: "36px", width: "auto", display: "block" }} />
             </div>
             <div className="hidden lg:flex flex-col text-xs leading-tight" style={{ color: "var(--c-muted)" }}>
-              <span>Надёжная офсетная типография</span>
-              <span>полного цикла в Москве</span>
+              <span style={{ color: "var(--c-text)", fontWeight: 600 }}>Надёжная офсетная типография</span>
+              <span>полного цикла в Москве. <span style={{ color: "var(--c-blue)" }}>Работаем по всей России</span></span>
             </div>
           </div>
           <div className="hidden md:flex items-center gap-6">
             {NAV_LINKS.map((l) => (
-              <a key={l.href} href={l.href} className="text-sm font-medium transition-colors hover:opacity-80 whitespace-nowrap" style={{ color: "var(--c-muted)" }}>{l.label}</a>
+              <a key={l.href} href={l.href} className="text-sm font-medium transition-colors hover:underline whitespace-nowrap" style={{ color: "var(--c-text)" }}>{l.label}</a>
             ))}
           </div>
-          <div className="hidden lg:flex flex-col items-end gap-0.5 flex-shrink-0">
-            <a href="tel:+74950000000" className="text-sm font-semibold transition-colors hover:opacity-80 whitespace-nowrap"
-              style={{ color: "var(--c-text)" }}>+7 (495) 000-00-00</a>
-            <a href="mailto:info@pkzapad.ru" className="text-xs transition-colors hover:opacity-80 whitespace-nowrap"
-              style={{ color: "var(--c-muted)" }}>info@pkzapad.ru</a>
-          </div>
-          <button onClick={() => setCallbackOpen(true)} className="hidden md:block px-5 py-2 rounded-lg font-bold text-black text-sm transition-opacity hover:opacity-90 whitespace-nowrap flex-shrink-0"
-            style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em" }}>
+          <button onClick={() => setCallbackOpen(true)} className="hidden md:block px-5 py-2.5 rounded-md font-bold text-white text-sm transition-opacity hover:opacity-90 whitespace-nowrap flex-shrink-0"
+            style={{ background: "var(--c-accent)", fontFamily: "Onest, sans-serif", letterSpacing: "0.05em" }}>
             ПЕРЕЗВОНИТЕ МНЕ
           </button>
           <div className="flex md:hidden items-center gap-3">
-            <a href="tel:+74950000000" className="text-sm font-bold whitespace-nowrap" style={{ color: "var(--c-accent)" }}>
+            <a href="tel:+74950000000" className="text-sm font-bold whitespace-nowrap" style={{ color: "var(--c-blue)" }}>
               +7 (495) 000-00-00
             </a>
             <button onClick={() => setMenuOpen(!menuOpen)} className="p-2" style={{ color: "var(--c-text)" }}>
@@ -581,96 +597,86 @@ export default function Index() {
           </div>
         </div>
         {menuOpen && (
-          <div className="md:hidden px-6 pb-4 flex flex-col gap-3" style={{ background: "rgba(14,14,16,0.98)" }}>
+          <div className="md:hidden px-6 pb-4 flex flex-col gap-3" style={{ background: "#fff", borderTop: "1px solid var(--c-border)" }}>
             {NAV_LINKS.map((l) => (
               <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} className="py-2 text-sm font-medium border-b"
-                style={{ color: "var(--c-muted)", borderColor: "var(--c-border)" }}>{l.label}</a>
+                style={{ color: "var(--c-text)", borderColor: "var(--c-border)" }}>{l.label}</a>
             ))}
             <div className="flex flex-col gap-2 pt-1">
-              <a href="tel:+74950000000" className="flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--c-text)" }}>
+              <a href="tel:+74950000000" className="flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--c-blue)" }}>
                 <Icon name="Phone" size={15} style={{ color: "var(--c-accent)" } as React.CSSProperties} />
                 +7 (495) 000-00-00
               </a>
               <a href="mailto:info@pkzapad.ru" className="flex items-center gap-2 text-sm" style={{ color: "var(--c-muted)" }}>
-                <Icon name="Mail" size={15} style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+                <Icon name="Mail" size={15} style={{ color: "var(--c-blue)" } as React.CSSProperties} />
                 info@pkzapad.ru
               </a>
             </div>
-            <button onClick={() => { setCallbackOpen(true); setMenuOpen(false); }} className="py-3 rounded-lg font-bold text-black"
-              style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif" }}>ПЕРЕЗВОНИТЕ МНЕ</button>
+            <button onClick={() => { setCallbackOpen(true); setMenuOpen(false); }} className="py-3 rounded-md font-bold text-white"
+              style={{ background: "var(--c-accent)", fontFamily: "Onest, sans-serif" }}>ПЕРЕЗВОНИТЕ МНЕ</button>
           </div>
         )}
       </nav>
 
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center pt-16 overflow-hidden" id="hero"
-        style={{
-          backgroundImage: `linear-gradient(110deg, rgba(14,14,16,0.96) 45%, rgba(14,14,16,0.6) 100%), url(${HERO_IMAGE})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}>
-        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle at 80% 50%, rgba(255,107,0,0.15) 0%, transparent 60%)" }} />
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(5)].map((_, i) => (
-            <div key={i} className="absolute" style={{ top: `${10 + i * 18}%`, left: "-10%", right: "-10%", height: "1px",
-              background: "linear-gradient(90deg, transparent, var(--c-accent), transparent)", opacity: 0.05,
-              animation: `scanline ${3 + i * 0.7}s ease-in-out infinite alternate`, animationDelay: `${i * 0.4}s` }} />
-          ))}
-        </div>
+      <section className="relative flex items-center overflow-hidden pt-[100px]" id="hero"
+        style={{ background: "var(--c-bg)", minHeight: "calc(100vh - 100px)" }}>
+        <div className="max-w-7xl mx-auto px-6 py-16 w-full">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left */}
+            <div>
+              <h1 className="font-extrabold leading-tight mb-4"
+                style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(2rem, 4.5vw, 3.4rem)", letterSpacing: "-0.02em", color: "var(--c-text)" }}>
+                Напечатаем рекламную полиграфию<br />
+                от <span style={{ color: "var(--c-blue)" }}>500 шт.</span> с гарантией качества и сроков<br />
+                на <span style={{ color: "var(--c-blue)" }}>15%</span> ниже рынка за <span style={{ color: "var(--c-blue)" }}>5 дней</span>
+              </h1>
 
-        <div className="relative max-w-7xl mx-auto px-6 py-20">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold mb-6"
-              style={{ background: "rgba(255,107,0,0.15)", border: "1px solid rgba(255,107,0,0.3)", color: "var(--c-accent)" }}>
-              <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: "var(--c-accent)" }} />
-              Собственное производство · Москва
+              <div className="flex flex-col gap-2.5 mb-6">
+                {[
+                  { bold: "Цветопроба", rest: " бесплатно" },
+                  { bold: "Доставка в день готовности", rest: " собственной службой" },
+                  { bold: "Стоимость печати ниже", rest: " за счёт своего производства" },
+                  { bold: "Во избежании брака", rest: " печатаем на 2% выше тиража" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm" style={{ color: "var(--c-text)" }}>
+                    <Icon name="CheckCircle2" size={18} style={{ color: "var(--c-accent)", flexShrink: 0 } as React.CSSProperties} />
+                    <span><span style={{ color: "var(--c-accent)", fontWeight: 600 }}>{item.bold}</span>{item.rest}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium mb-8"
+                style={{ background: "rgba(39,174,96,0.08)", border: "1px solid rgba(39,174,96,0.25)", color: "var(--c-accent)" }}>
+                🎁 <span><strong>Скидка 10%</strong> на первый заказ для новых клиентов</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button onClick={() => setQuizOpen(true)}
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 rounded-md font-bold text-sm text-white transition-all hover:opacity-90"
+                  style={{ background: "var(--c-accent)", fontFamily: "Onest, sans-serif", letterSpacing: "0.04em" }}>
+                  РАССЧИТАТЬ СТОИМОСТЬ ЗА 2 МИНУТЫ
+                </button>
+                <button onClick={() => setCallbackOpen(true)}
+                  className="flex items-center justify-center gap-2 px-7 py-3.5 rounded-md font-bold text-sm transition-all hover:bg-blue-50"
+                  style={{ background: "transparent", border: "2px solid var(--c-blue)", color: "var(--c-blue)", fontFamily: "Onest, sans-serif", letterSpacing: "0.04em" }}>
+                  ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ ТЕХНОЛОГА
+                </button>
+              </div>
             </div>
-
-            <h1 className="font-black leading-tight mb-2"
-              style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2.2rem, 5.5vw, 4.5rem)", letterSpacing: "-0.01em", color: "var(--c-text)" }}>
-              Производство и печать упаковки из картона
-            </h1>
-            <h2 className="font-black leading-tight mb-3"
-              style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(1.6rem, 4vw, 3.2rem)", letterSpacing: "-0.01em", color: "var(--c-text)" }}>
-              от <span style={{ color: "var(--c-accent)" }}>5 000 шт.</span> в Москве за <span style={{ color: "var(--c-accent)" }}>5 дней</span>
-            </h2>
-
-            <p className="mb-6 font-medium" style={{ color: "var(--c-muted)", fontSize: "clamp(0.95rem, 1.8vw, 1.1rem)", lineHeight: 1.6, maxWidth: "560px" }}>
-              с гарантией качества и соблюдения сроков
-            </p>
-
-            <div className="flex flex-wrap gap-3 mb-10">
-              {["Цветопроба за 0 ₽", "На 15% ниже рынка", "Доставка в день готовности"].map((tag) => (
-                <span key={tag} className="px-3 py-1 rounded-full text-sm font-medium"
-                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid var(--c-border)", color: "var(--c-muted)" }}>{tag}</span>
-              ))}
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button onClick={() => setQuizOpen(true)}
-                className="group flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-base text-black transition-all hover:scale-[1.02]"
-                style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em", boxShadow: "0 0 40px rgba(255,107,0,0.3)" }}>
-                <Icon name="Calculator" size={20} />
-                РАССЧИТАТЬ СТОИМОСТЬ ЗА 2 МИНУТЫ
-              </button>
-              <button onClick={() => setCallbackOpen(true)}
-                className="flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-base transition-all hover:scale-[1.02]"
-                style={{ background: "transparent", border: "2px solid var(--c-border)", color: "var(--c-text)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--c-accent)"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--c-border)"; }}>
-                <Icon name="Package" size={20} />
-                ПОЛУЧИТЬ ОБРАЗЦЫ
-              </button>
+            {/* Right — image */}
+            <div className="relative rounded-2xl overflow-hidden shadow-xl" style={{ aspectRatio: "4/3" }}>
+              <img src={HERO_IMAGE} alt="Полиграфия" className="w-full h-full object-cover" />
+              <div className="absolute bottom-0 left-0 right-0 px-5 py-3" style={{ background: "rgba(30,58,138,0.85)" }}>
+                <span className="text-white font-semibold text-sm">Буклеты, брошюры, каталоги</span>
+              </div>
             </div>
           </div>
         </div>
-
-
       </section>
 
       {/* STATS */}
-      <section ref={statsRef.ref} style={{ background: "var(--c-accent)", padding: "3rem 0" }}>
+      <section ref={statsRef.ref} style={{ background: "var(--c-blue-dark)", padding: "2.5rem 0" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
@@ -680,10 +686,10 @@ export default function Index() {
               { val: c4, suffix: "+", label: "выполненных заказов" },
             ].map((s, i) => (
               <div key={i}>
-                <div className="font-black text-4xl md:text-5xl text-black mb-1" style={{ fontFamily: "Oswald, sans-serif" }}>
+                <div className="font-black text-4xl md:text-5xl mb-1" style={{ fontFamily: "Onest, sans-serif", color: "#fff" }}>
                   {s.val.toLocaleString("ru")}{s.suffix}
                 </div>
-                <div className="text-sm font-medium text-black opacity-70">{s.label}</div>
+                <div className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.65)" }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -693,23 +699,21 @@ export default function Index() {
       {/* ADVANTAGES */}
       <section id="advantages" className="py-20" style={{ background: "var(--c-bg)" }}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-12">
-            <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>ПОЧЕМУ МЫ</div>
-            <h2 className="font-black" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
-              ГАРАНТИИ,<br /><span style={{ color: "var(--c-accent)" }}>КОТОРЫЕ РАБОТАЮТ</span>
+          <div className="mb-12 text-center">
+            <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>Почему мы</div>
+            <h2 className="font-extrabold" style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--c-text)" }}>
+              Гарантии, которые работают
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             {ADVANTAGES.map((a, i) => (
-              <div key={i} className="p-8 rounded-2xl transition-all duration-300 hover:scale-[1.01]"
-                style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--c-accent)"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--c-border)"; }}>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ background: "rgba(255,107,0,0.12)" }}>
+              <div key={i} className="p-8 rounded-xl transition-all duration-300"
+                style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ background: "rgba(39,174,96,0.10)" }}>
                   <Icon name={a.icon as AnyIcon} size={24} fallback="Star" style={{ color: "var(--c-accent)" } as React.CSSProperties} />
                 </div>
-                <h3 className="font-bold text-lg mb-3" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>{a.title}</h3>
+                <h3 className="font-bold text-lg mb-3" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>{a.title}</h3>
                 <p style={{ color: "var(--c-muted)", lineHeight: 1.7 }}>{a.text}</p>
               </div>
             ))}
@@ -718,44 +722,55 @@ export default function Index() {
       </section>
 
       {/* PORTFOLIO */}
-      <section id="portfolio" className="py-20" style={{ background: "var(--c-surface)" }}>
+      <section id="portfolio" className="py-20" style={{ background: "var(--c-bg)" }}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-12">
-            <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>ЧТО МЫ ДЕЛАЕМ</div>
-            <h2 className="font-black mb-4" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
-              Продукция, которую<br /><span style={{ color: "var(--c-accent)" }}>мы печатаем</span>
+          <div className="mb-12 text-center">
+            <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>Продукция</div>
+            <h2 className="font-extrabold mb-2" style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--c-text)" }}>
+              Работаем с тиражами от 500 штук
             </h2>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
             {PORTFOLIO_ITEMS.map((item, i) => (
-              <div key={i} className="relative p-6 rounded-2xl transition-all duration-300 hover:scale-[1.02]"
-                style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--c-accent)"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--c-border)"; }}>
-                {item.badge && (
-                  <span className="absolute top-4 right-4 px-2 py-1 rounded-md text-xs font-bold"
-                    style={{ background: "rgba(255,107,0,0.15)", color: "var(--c-accent)", border: "1px solid rgba(255,107,0,0.3)" }}>
-                    {item.badge}
-                  </span>
-                )}
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ background: "rgba(255,107,0,0.12)" }}>
-                  <Icon name={item.icon as AnyIcon} size={26} fallback="Package" style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+              <div key={i} className="relative rounded-xl overflow-hidden transition-all duration-300"
+                style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}>
+                {/* Photo area */}
+                <div className="relative" style={{ aspectRatio: "16/9", background: "var(--c-bg)" }}>
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center" style={{ background: "rgba(37,99,235,0.08)" }}>
+                      <Icon name={item.icon as AnyIcon} size={36} fallback="Package" style={{ color: "var(--c-blue)" } as React.CSSProperties} />
+                    </div>
+                  </div>
+                  {item.badge && (
+                    <span className="absolute top-3 right-3 px-2 py-1 rounded text-xs font-bold text-white" style={{ background: "var(--c-blue)" }}>
+                      {item.badge}
+                    </span>
+                  )}
+                  <div className="absolute bottom-0 left-0 right-0 px-4 py-2" style={{ background: "var(--c-blue-dark)" }}>
+                    <span className="text-white font-semibold text-sm">{item.title}</span>
+                  </div>
                 </div>
-                <h3 className="font-bold mb-2" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>{item.title}</h3>
-                <p className="text-sm" style={{ color: "var(--c-muted)", lineHeight: 1.6 }}>{item.desc}</p>
+                {/* Features */}
+                <div className="p-5">
+                  <div className="flex flex-col gap-1.5 mb-4">
+                    {item.desc.split(". ").filter(Boolean).map((feat, fi) => (
+                      <div key={fi} className="flex items-center gap-2 text-sm" style={{ color: "var(--c-text)" }}>
+                        <Icon name="Check" size={14} style={{ color: "var(--c-accent)", flexShrink: 0 } as React.CSSProperties} />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <button onClick={() => setQuizOpen(true)}
+                    className="w-full py-2.5 rounded-md font-bold text-white text-sm transition-all hover:opacity-90"
+                    style={{ background: "var(--c-blue)", fontFamily: "Onest, sans-serif", letterSpacing: "0.04em" }}>
+                    РАССЧИТАТЬ ТОЧНУЮ СТОИМОСТЬ
+                  </button>
+                </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center">
-            <button onClick={() => setQuizOpen(true)}
-              className="inline-flex items-center gap-3 px-10 py-4 rounded-xl font-bold text-black transition-all hover:scale-[1.02]"
-              style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", fontSize: "1rem", letterSpacing: "0.05em" }}>
-              <Icon name="Search" size={20} />
-              ПОДОБРАТЬ УПАКОВКУ ПОД ВАШ ПРОДУКТ
-            </button>
-          </div>
         </div>
       </section>
 
@@ -763,9 +778,9 @@ export default function Index() {
       <section id="works" className="py-20" style={{ background: "var(--c-bg)" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-10">
-            <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>ПОРТФОЛИО</div>
-            <h2 className="font-black mb-3" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
-              Реальные проекты от сетей<br /><span style={{ color: "var(--c-accent)" }}>фастфуда и производителей</span>
+            <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>Портфолио</div>
+            <h2 className="font-extrabold mb-3" style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--c-text)" }}>
+              Реальные проекты от сетей фастфуда и производителей
             </h2>
             <p className="text-sm mb-8 flex items-center gap-2" style={{ color: "var(--c-muted)" }}>
               <Icon name="Lock" size={14} />
@@ -777,9 +792,9 @@ export default function Index() {
                 <button key={cat} onClick={() => setPortfolioCat(cat)}
                   className="px-4 py-2 rounded-full text-sm font-semibold transition-all"
                   style={{
-                    background: portfolioCat === cat ? "var(--c-accent)" : "var(--c-surface)",
-                    color: portfolioCat === cat ? "#000" : "var(--c-muted)",
-                    border: `1px solid ${portfolioCat === cat ? "var(--c-accent)" : "var(--c-border)"}`,
+                    background: portfolioCat === cat ? "var(--c-blue)" : "var(--c-surface)",
+                    color: portfolioCat === cat ? "#fff" : "var(--c-muted)",
+                    border: `1px solid ${portfolioCat === cat ? "var(--c-blue)" : "var(--c-border)"}`,
                   }}>
                   {cat}
                 </button>
@@ -790,19 +805,19 @@ export default function Index() {
               <button onClick={() => setFilterOpen(!filterOpen)}
                 className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold"
                 style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", color: "var(--c-text)" }}>
-                <Icon name="SlidersHorizontal" size={16} style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+                <Icon name="SlidersHorizontal" size={16} style={{ color: "var(--c-blue)" } as React.CSSProperties} />
                 {portfolioCat === "Все" ? "Фильтр по категории" : portfolioCat}
                 <Icon name={filterOpen ? "ChevronUp" : "ChevronDown"} size={14} />
               </button>
               {filterOpen && (
-                <div className="absolute left-0 top-full mt-2 z-20 rounded-2xl overflow-hidden shadow-xl min-w-[200px]"
+                <div className="absolute left-0 top-full mt-2 z-20 rounded-xl overflow-hidden shadow-xl min-w-[200px]"
                   style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}>
                   {PORTFOLIO_CATEGORIES.map(cat => (
                     <button key={cat} onClick={() => { setPortfolioCat(cat); setFilterOpen(false); }}
                       className="w-full text-left px-5 py-3 text-sm font-medium transition-colors"
                       style={{
-                        background: portfolioCat === cat ? "rgba(255,107,0,0.12)" : "transparent",
-                        color: portfolioCat === cat ? "var(--c-accent)" : "var(--c-text)",
+                        background: portfolioCat === cat ? "rgba(37,99,235,0.08)" : "transparent",
+                        color: portfolioCat === cat ? "var(--c-blue)" : "var(--c-text)",
                         borderBottom: "1px solid var(--c-border)",
                       }}>
                       {cat}
@@ -815,26 +830,26 @@ export default function Index() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {PORTFOLIO_PROJECTS.filter(p => portfolioCat === "Все" || p.category === portfolioCat).map(p => (
-              <div key={p.id} className="rounded-2xl overflow-hidden cursor-pointer group transition-all duration-300 hover:scale-[1.02]"
-                style={{ border: "1px solid var(--c-border)", background: "var(--c-surface)" }}
+              <div key={p.id} className="rounded-xl overflow-hidden cursor-pointer group transition-all duration-300 hover:shadow-md"
+                style={{ border: "1px solid var(--c-border)", background: "var(--c-surface)", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}
                 onClick={() => setPortfolioModal(p)}>
                 <div className="relative" style={{ aspectRatio: "4/3" }}>
                   <img src={p.img} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 flex items-start p-3">
-                    <span className="px-2 py-1 rounded-md text-xs font-bold" style={{ background: "rgba(255,107,0,0.85)", color: "#000" }}>{p.category}</span>
+                    <span className="px-2 py-1 rounded-md text-xs font-bold text-white" style={{ background: "var(--c-blue-dark)" }}>{p.category}</span>
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                    style={{ background: "rgba(255,107,0,0.2)" }}>
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: "rgba(255,107,0,0.9)" }}>
-                      <Icon name="ZoomIn" size={20} style={{ color: "#000" } as React.CSSProperties} />
+                    style={{ background: "rgba(37,99,235,0.15)" }}>
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: "rgba(37,99,235,0.9)" }}>
+                      <Icon name="ZoomIn" size={20} style={{ color: "#fff" } as React.CSSProperties} />
                     </div>
                   </div>
-                  <div className="absolute inset-0 flex items-center justify-center" style={{ background: "rgba(0,0,0,0.35)" }}>
-                    <span className="px-3 py-1 rounded-full text-xs font-bold border" style={{ background: "rgba(0,0,0,0.5)", color: "rgba(255,255,255,0.7)", borderColor: "rgba(255,255,255,0.3)" }}>ПРИМЕР</span>
+                  <div className="absolute inset-0 flex items-center justify-center" style={{ background: "rgba(0,0,0,0.30)" }}>
+                    <span className="px-3 py-1 rounded-full text-xs font-bold border" style={{ background: "rgba(0,0,0,0.5)", color: "rgba(255,255,255,0.8)", borderColor: "rgba(255,255,255,0.3)" }}>ПРИМЕР</span>
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-bold text-sm mb-2" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>{p.title}</h3>
+                  <h3 className="font-bold text-sm mb-2" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>{p.title}</h3>
                   <div className="flex flex-col gap-1 text-xs" style={{ color: "var(--c-muted)" }}>
                     <span>Тираж: <strong style={{ color: "var(--c-text)" }}>{p.volume}</strong></span>
                     <span>Материал: <strong style={{ color: "var(--c-text)" }}>{p.material}</strong></span>
@@ -847,25 +862,25 @@ export default function Index() {
         </div>
 
         {portfolioModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.92)" }}
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.75)" }}
             onClick={() => setPortfolioModal(null)}>
-            <div className="relative w-full max-w-2xl rounded-2xl overflow-hidden" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}
+            <div className="relative w-full max-w-2xl rounded-xl overflow-hidden" style={{ background: "#fff", border: "1px solid var(--c-border)", boxShadow: "0 8px 40px rgba(0,0,0,0.18)" }}
               onClick={e => e.stopPropagation()}>
               <button onClick={() => setPortfolioModal(null)} className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full flex items-center justify-center"
-                style={{ background: "rgba(0,0,0,0.6)", color: "#fff" }}>
+                style={{ background: "var(--c-bg)", color: "var(--c-text)", border: "1px solid var(--c-border)" }}>
                 <Icon name="X" size={16} />
               </button>
               <div className="flex flex-col sm:flex-row">
                 {/* Photo — compact */}
                 <div className="relative flex-shrink-0 sm:w-48" style={{ minHeight: "160px" }}>
                   <img src={portfolioModal.img} alt={portfolioModal.title} className="w-full h-full object-cover" style={{ position: "absolute", inset: 0 }} />
-                  <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(0,0,0,0.2)" }}>
-                    <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded text-xs font-bold" style={{ background: "rgba(255,107,0,0.85)", color: "#000" }}>{portfolioModal.category}</span>
+                  <div className="absolute inset-0 pointer-events-none">
+                    <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded text-xs font-bold text-white" style={{ background: "var(--c-blue-dark)" }}>{portfolioModal.category}</span>
                   </div>
                 </div>
                 {/* Content */}
                 <div className="p-5 flex flex-col gap-3 flex-1 min-w-0">
-                  <h3 className="font-black text-lg leading-tight" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>{portfolioModal.title}</h3>
+                  <h3 className="font-black text-lg leading-tight" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>{portfolioModal.title}</h3>
                   <div className="grid grid-cols-2 gap-1.5">
                     {[
                       { label: "Тираж", val: portfolioModal.volume },
@@ -881,7 +896,7 @@ export default function Index() {
                       </div>
                     ))}
                   </div>
-                  <div className="flex items-start gap-2 p-2.5 rounded-xl" style={{ background: "rgba(255,107,0,0.08)", border: "1px solid rgba(255,107,0,0.2)" }}>
+                  <div className="flex items-start gap-2 p-2.5 rounded-xl" style={{ background: "rgba(39,174,96,0.07)", border: "1px solid rgba(39,174,96,0.2)" }}>
                     <Icon name="TrendingUp" size={16} style={{ color: "var(--c-accent)", flexShrink: 0, marginTop: 1 } as React.CSSProperties} />
                     <div>
                       <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>Результат</div>
@@ -889,8 +904,8 @@ export default function Index() {
                     </div>
                   </div>
                   <button onClick={() => { setPortfolioModal(null); setQuizOpen(true); }}
-                    className="w-full py-2.5 rounded-xl font-bold text-black text-sm transition-all hover:opacity-90"
-                    style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em" }}>
+                    className="w-full py-2.5 rounded-md font-bold text-white text-sm transition-all hover:opacity-90"
+                    style={{ background: "var(--c-accent)", fontFamily: "Onest, sans-serif", letterSpacing: "0.05em" }}>
                     МНЕ НУЖНО ТАК ЖЕ →
                   </button>
                 </div>
@@ -901,23 +916,23 @@ export default function Index() {
       </section>
 
       {/* GALLERY */}
-      <section id="gallery" className="py-20" style={{ background: "var(--c-bg)" }}>
+      <section id="gallery" className="py-20" style={{ background: "#fff" }}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-12">
-            <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>КЕЙСЫ</div>
-            <h2 className="font-black mb-4" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
-              Истории успеха<br /><span style={{ color: "var(--c-accent)" }}>наших партнёров</span>
+          <div className="mb-12 text-center">
+            <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>Кейсы</div>
+            <h2 className="font-extrabold mb-2" style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--c-text)" }}>
+              Истории успеха наших партнёров
             </h2>
           </div>
 
           {/* CASE — two columns */}
-          <div className="rounded-2xl overflow-hidden" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)" }}>
+          <div className="rounded-xl overflow-hidden" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", boxShadow: "0 4px 20px rgba(0,0,0,0.07)" }}>
             <div className="grid md:grid-cols-2 gap-0">
               {/* Left — text */}
               <div className="p-8 flex flex-col justify-between" style={{ borderRight: "1px solid var(--c-border)" }}>
                 <div>
-                  <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>КЕЙС</div>
-                  <h3 className="font-black mb-4" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(1.2rem, 2.5vw, 1.8rem)", color: "var(--c-text)" }}>
+                  <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>Кейс</div>
+                  <h3 className="font-extrabold mb-4" style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.2rem, 2.5vw, 1.6rem)", color: "var(--c-text)" }}>
                     Как мы напечатали 50 000 крафт-пакетов для сети фастфуда за 4 дня
                   </h3>
                   <p className="mb-5 text-sm" style={{ color: "var(--c-muted)", lineHeight: 1.7 }}>
@@ -925,7 +940,7 @@ export default function Index() {
                   </p>
                   <div className="flex flex-col gap-3 mb-5">
                     {[
-                      { icon: "CheckCircle", text: "За 1 день утвердили цветопробу" },
+                      { icon: "CheckCircle2", text: "За 1 день утвердили цветопробу" },
                       { icon: "Layers", text: "Печатали на двух линиях параллельно" },
                       { icon: "Truck", text: "Своя доставка к утру пятого дня" },
                     ].map((item, i) => (
@@ -936,7 +951,7 @@ export default function Index() {
                     ))}
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-4 rounded-xl" style={{ background: "rgba(255,107,0,0.08)", border: "1px solid rgba(255,107,0,0.2)" }}>
+                <div className="flex items-center gap-3 p-4 rounded-xl" style={{ background: "rgba(39,174,96,0.07)", border: "1px solid rgba(39,174,96,0.2)" }}>
                   <Icon name="TrendingUp" size={24} style={{ color: "var(--c-accent)", flexShrink: 0 } as React.CSSProperties} />
                   <div>
                     <div className="font-black text-lg" style={{ color: "var(--c-accent)" }}>+23% к продажам</div>
@@ -1004,18 +1019,18 @@ export default function Index() {
       </section>
 
       {/* REVIEWS */}
-      <section id="reviews" className="py-20" style={{ background: "var(--c-surface)" }}>
+      <section id="reviews" className="py-20" style={{ background: "var(--c-bg)" }}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-12">
-            <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>ОТЗЫВЫ КЛИЕНТОВ</div>
-            <h2 className="font-black mb-2" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
-              Что говорят<br /><span style={{ color: "var(--c-accent)" }}>наши клиенты</span>
+          <div className="mb-12 text-center">
+            <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>Отзывы клиентов</div>
+            <h2 className="font-extrabold mb-2" style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--c-text)" }}>
+              Что говорят наши клиенты
             </h2>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 justify-center">
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_, j) => <span key={j} className="text-yellow-400 text-xl">★</span>)}
               </div>
-              <span className="text-2xl font-black" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>4.9</span>
+              <span className="text-2xl font-black" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>4.9</span>
               <span className="text-sm" style={{ color: "var(--c-muted)" }}>· 47 отзывов на Яндекс Картах</span>
             </div>
           </div>
@@ -1023,11 +1038,11 @@ export default function Index() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {REVIEWS.map((r, i) => (
               <div key={i}
-                className={`p-6 rounded-2xl flex flex-col gap-4 transition-all duration-300 hover:scale-[1.01] ${i >= 3 && !showAllReviews ? "hidden md:flex" : ""}`}
-                style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)" }}>
+                className={`p-6 rounded-xl flex flex-col gap-4 transition-all duration-300 ${i >= 3 && !showAllReviews ? "hidden md:flex" : ""}`}
+                style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}>
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0"
-                    style={{ background: "var(--c-accent)", color: "#000", fontFamily: "Oswald, sans-serif" }}>
+                    style={{ background: "var(--c-blue-dark)", color: "#fff", fontFamily: "Onest, sans-serif" }}>
                     {r.initial}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -1063,23 +1078,23 @@ export default function Index() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="py-20" style={{ background: "var(--c-bg)" }}>
+      <section id="faq" className="py-20" style={{ background: "#fff" }}>
         <div className="max-w-4xl mx-auto px-6">
           <div className="mb-12 text-center">
-            <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>FAQ</div>
-            <h2 className="font-black" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
-              ЧАСТЫЕ <span style={{ color: "var(--c-accent)" }}>ВОПРОСЫ</span>
+            <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>FAQ</div>
+            <h2 className="font-extrabold" style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--c-text)" }}>
+              Часто задаваемые вопросы
             </h2>
           </div>
           <div className="flex flex-col gap-3">
             {FAQS.map((f, i) => (
-              <div key={i} className="rounded-2xl overflow-hidden" style={{ border: "1px solid var(--c-border)", background: "var(--c-surface)" }}>
+              <div key={i} className="rounded-xl overflow-hidden" style={{ border: "1px solid var(--c-border)", background: "var(--c-surface)", boxShadow: "0 1px 4px rgba(0,0,0,0.04)" }}>
                 <button className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold"
                   style={{ color: "var(--c-text)", background: "transparent" }}
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}>
                   <span>{f.q}</span>
                   <Icon name={openFaq === i ? "ChevronUp" : "ChevronDown"} size={18}
-                    style={{ color: "var(--c-accent)", flexShrink: 0, marginLeft: "12px" } as React.CSSProperties} />
+                    style={{ color: "var(--c-blue)", flexShrink: 0, marginLeft: "12px" } as React.CSSProperties} />
                 </button>
                 {openFaq === i && (
                   <div className="px-6 pb-5 text-sm" style={{ color: "var(--c-muted)", lineHeight: 1.7, borderTop: "1px solid var(--c-border)" }}>
@@ -1093,20 +1108,20 @@ export default function Index() {
       </section>
 
       {/* CONTACTS */}
-      <section id="contacts" className="py-20" style={{ background: "var(--c-surface)" }}>
+      <section id="contacts" className="py-20" style={{ background: "var(--c-bg)" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-start">
             {/* Left */}
             <div>
-              <div className="text-xs font-bold tracking-[0.2em] mb-3" style={{ color: "var(--c-accent)" }}>СВЯЗАТЬСЯ С НАМИ</div>
-              <h2 className="font-black mb-8" style={{ fontFamily: "Oswald, sans-serif", fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "var(--c-text)" }}>
-                Получите консультацию<br /><span style={{ color: "var(--c-accent)" }}>технолога</span>
+              <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>Связаться с нами</div>
+              <h2 className="font-extrabold mb-8" style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--c-text)" }}>
+                Получите консультацию технолога
               </h2>
               <div className="flex flex-col gap-4">
                 <a href="tel:+74950000000" className="flex items-center gap-3 group"
                   style={{ color: "var(--c-text)", textDecoration: "none" }}>
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,107,0,0.1)" }}>
-                    <Icon name="Phone" size={18} style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(37,99,235,0.08)" }}>
+                    <Icon name="Phone" size={18} style={{ color: "var(--c-blue)" } as React.CSSProperties} />
                   </div>
                   <div>
                     <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>Телефон</div>
@@ -1115,8 +1130,8 @@ export default function Index() {
                 </a>
                 <a href="mailto:info@pkzapad.ru" className="flex items-center gap-3 group"
                   style={{ color: "var(--c-text)", textDecoration: "none" }}>
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,107,0,0.1)" }}>
-                    <Icon name="Mail" size={18} style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(37,99,235,0.08)" }}>
+                    <Icon name="Mail" size={18} style={{ color: "var(--c-blue)" } as React.CSSProperties} />
                   </div>
                   <div>
                     <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>Email</div>
@@ -1124,8 +1139,8 @@ export default function Index() {
                   </div>
                 </a>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,107,0,0.1)" }}>
-                    <Icon name="MapPin" size={18} style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(37,99,235,0.08)" }}>
+                    <Icon name="MapPin" size={18} style={{ color: "var(--c-blue)" } as React.CSSProperties} />
                   </div>
                   <div>
                     <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>Производство</div>
@@ -1133,8 +1148,8 @@ export default function Index() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,107,0,0.1)" }}>
-                    <Icon name="Clock" size={18} style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(37,99,235,0.08)" }}>
+                    <Icon name="Clock" size={18} style={{ color: "var(--c-blue)" } as React.CSSProperties} />
                   </div>
                   <div>
                     <div className="text-xs mb-0.5" style={{ color: "var(--c-muted)" }}>Часы работы</div>
@@ -1145,29 +1160,29 @@ export default function Index() {
             </div>
 
             {/* Right — form */}
-            <div className="p-8 rounded-2xl" style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)" }}>
+            <div className="p-8 rounded-xl" style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}>
               {!conSent ? (
                 <>
-                  <h3 className="font-bold text-xl mb-1" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>
+                  <h3 className="font-bold text-xl mb-1" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>
                     Оставьте заявку
                   </h3>
                   <p className="text-sm mb-6" style={{ color: "var(--c-muted)" }}>Изучим ваш макет и поможем сэкономить до 20% на заказе</p>
                   <div className="flex flex-col gap-3">
                     <StyledInput placeholder="Ваше имя" value={conName} onChange={setConName} error={conErrors.name} />
-                    {conErrors.name && <span className="text-xs text-red-400 -mt-2">Введите имя</span>}
+                    {conErrors.name && <span className="text-xs text-red-500 -mt-2">Введите имя</span>}
                     <PhoneInput value={conPhone} onChange={setConPhone} error={conErrors.phone} />
-                    {conErrors.phone && <span className="text-xs text-red-400 -mt-2">Введите корректный номер</span>}
+                    {conErrors.phone && <span className="text-xs text-red-500 -mt-2">Введите корректный номер</span>}
                     <StyledInput placeholder="Название компании" value={conCompany} onChange={setConCompany} />
                     <textarea rows={3} placeholder="Опишите, что нужно (тип упаковки, тираж, сроки)" value={conText}
                       onChange={e => setConText(e.target.value)}
                       className="w-full px-4 py-3 rounded-xl outline-none resize-none text-sm"
-                      style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", color: "var(--c-text)" }} />
+                      style={{ background: "var(--c-bg)", border: "1px solid var(--c-border)", color: "var(--c-text)" }} />
                     <FileInput onChange={() => {}} />
                     <PrivacyCheck checked={conPrivacy} onChange={setConPrivacy} error={conErrors.privacy} />
-                    {conErrors.privacy && <span className="text-xs text-red-400 -mt-2">Необходимо ваше согласие</span>}
+                    {conErrors.privacy && <span className="text-xs text-red-500 -mt-2">Необходимо ваше согласие</span>}
                   </div>
-                  <button onClick={submitContact} className="w-full mt-5 py-4 rounded-xl font-bold text-black text-base transition-all hover:opacity-90 hover:scale-[1.01]"
-                    style={{ background: "var(--c-accent)", fontFamily: "Oswald, sans-serif", letterSpacing: "0.05em" }}>
+                  <button onClick={submitContact} className="w-full mt-5 py-4 rounded-md font-bold text-white text-base transition-all hover:opacity-90"
+                    style={{ background: "var(--c-accent)", fontFamily: "Onest, sans-serif", letterSpacing: "0.05em" }}>
                     ОТПРАВИТЬ ЗАЯВКУ
                   </button>
                   <p className="text-xs text-center mt-3" style={{ color: "var(--c-muted)" }}>Технолог перезвонит в течение 30 минут в рабочее время</p>
@@ -1175,7 +1190,7 @@ export default function Index() {
               ) : (
                 <div className="text-center py-6">
                   <div className="text-5xl mb-4">✅</div>
-                  <h3 className="text-2xl font-bold mb-3" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-text)" }}>Заявка принята!</h3>
+                  <h3 className="text-2xl font-bold mb-3" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>Заявка принята!</h3>
                   <p style={{ color: "var(--c-muted)" }}>Технолог свяжется с вами в течение 30 минут в рабочее время.</p>
                 </div>
               )}
@@ -1185,18 +1200,14 @@ export default function Index() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-8 text-center" style={{ background: "var(--c-bg)", borderTop: "1px solid var(--c-border)" }}>
-        <div className="font-bold text-xl mb-2" style={{ fontFamily: "Oswald, sans-serif", color: "var(--c-accent)" }}>
-          ПК<span style={{ color: "var(--c-text)" }}>ЗАПАД</span>
+      <footer className="py-8 text-center" style={{ background: "#fff", borderTop: "1px solid var(--c-border)" }}>
+        <div className="font-bold text-xl mb-2" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-blue-dark)" }}>
+          ПК<span style={{ color: "var(--c-accent)" }}>ЗАПАД</span>
         </div>
         <div className="text-sm" style={{ color: "var(--c-muted)" }}>© 2026 ПКЗапад. Производство упаковки из картона на заказ. Москва.</div>
       </footer>
 
       <style>{`
-        @keyframes scanline {
-          from { transform: translateY(-10px); }
-          to { transform: translateY(10px); }
-        }
         input::placeholder, textarea::placeholder { color: var(--c-muted); }
         html { scroll-behavior: smooth; }
       `}</style>
