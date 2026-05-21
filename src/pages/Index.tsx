@@ -473,6 +473,45 @@ function QuizModal({ onClose }: { onClose: () => void }) {
   );
 }
 
+const HERO_SLIDES = [
+  { img: HERO_IMAGE, label: "Крафт-пакеты для фастфуда" },
+  { img: HERO_IMAGE, label: "Коробки для кондитерских изделий" },
+  { img: HERO_IMAGE, label: "Упаковка для косметики" },
+  { img: HERO_IMAGE, label: "Картонная упаковка для чая" },
+  { img: HERO_IMAGE, label: "Фармацевтические пачки" },
+];
+
+function HeroGallery({ onQuiz }: { onQuiz: () => void }) {
+  const [idx, setIdx] = useState(0);
+  const prev = () => setIdx((i) => (i - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  const next = () => setIdx((i) => (i + 1) % HERO_SLIDES.length);
+  return (
+    <div className="relative rounded-2xl overflow-hidden shadow-xl select-none" style={{ aspectRatio: "4/3" }}>
+      <img src={HERO_SLIDES[idx].img} alt={HERO_SLIDES[idx].label} className="w-full h-full object-cover transition-opacity duration-300" />
+      <div className="absolute bottom-0 left-0 right-0 px-5 py-3 flex items-center justify-between" style={{ background: "rgba(30,58,138,0.88)" }}>
+        <span className="text-white font-semibold text-sm">{HERO_SLIDES[idx].label}</span>
+        <span className="text-white text-xs opacity-70">{idx + 1} / {HERO_SLIDES.length}</span>
+      </div>
+      <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center transition-all hover:opacity-90"
+        style={{ background: "rgba(255,255,255,0.9)" }}>
+        <Icon name="ChevronLeft" size={18} style={{ color: "var(--c-text)" } as React.CSSProperties} />
+      </button>
+      <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center transition-all hover:opacity-90"
+        style={{ background: "rgba(255,255,255,0.9)" }}>
+        <Icon name="ChevronRight" size={18} style={{ color: "var(--c-text)" } as React.CSSProperties} />
+      </button>
+      {/* Thumbnails */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-2">
+        {HERO_SLIDES.map((_, i) => (
+          <button key={i} onClick={() => setIdx(i)}
+            className="rounded-full transition-all"
+            style={{ width: i === idx ? "24px" : "8px", height: "8px", background: i === idx ? "#fff" : "rgba(255,255,255,0.5)" }} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Index() {
   const [quizOpen, setQuizOpen] = useState(false);
   const [callbackOpen, setCallbackOpen] = useState(false);
@@ -618,19 +657,36 @@ export default function Index() {
         )}
       </nav>
 
+      {/* TICKER */}
+      <div className="overflow-hidden py-2.5" style={{ background: "var(--c-blue-dark)", marginTop: "100px" }}>
+        <div className="flex whitespace-nowrap" style={{ animation: "ticker 28s linear infinite" }}>
+          {[...Array(3)].map((_, gi) => (
+            <div key={gi} className="flex items-center gap-0 flex-shrink-0">
+              {["ДОСТАВКА ПО МОСКВЕ И МО", "28 ЛЕТ НА РЫНКЕ B2B", "ТЕСТОВЫЙ ТИРАЖ БЕСПЛАТНО", "СРОК ОТ 5 ДНЕЙ", "КОНТРОЛЬ КАЧЕСТВА НА КАЖДОМ ЭТАПЕ"].map((t) => (
+                <span key={t} className="inline-flex items-center gap-2 px-6 text-sm font-bold" style={{ color: "#fff" }}>
+                  {t} <span style={{ color: "rgba(255,255,255,0.4)" }}>✦</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* HERO */}
-      <section className="relative flex items-center overflow-hidden pt-[100px]" id="hero"
-        style={{ background: "var(--c-bg)", minHeight: "calc(100vh - 100px)" }}>
+      <section className="relative flex items-center overflow-hidden" id="hero"
+        style={{ background: "var(--c-bg)", minHeight: "calc(100vh - 138px)" }}>
         <div className="max-w-7xl mx-auto px-6 py-16 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left */}
             <div>
-              <h1 className="font-extrabold leading-tight mb-4"
-                style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(2rem, 4.5vw, 3.4rem)", letterSpacing: "-0.02em", color: "var(--c-text)" }}>
-                Напечатаем рекламную полиграфию<br />
-                от <span style={{ color: "var(--c-blue)" }}>500 шт.</span> с гарантией качества и сроков<br />
-                на <span style={{ color: "var(--c-blue)" }}>15%</span> ниже рынка за <span style={{ color: "var(--c-blue)" }}>5 дней</span>
+              <h1 className="font-extrabold leading-tight mb-3"
+                style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.6rem, 3.2vw, 2.6rem)", letterSpacing: "-0.02em", color: "var(--c-text)" }}>
+                Производство и печать упаковки из картона<br />
+                от <span style={{ color: "var(--c-blue)" }}>5 000 шт.</span> в Москве за <span style={{ color: "var(--c-blue)" }}>5 дней</span>
               </h1>
+              <p className="mb-5 text-base font-medium" style={{ color: "var(--c-muted)" }}>
+                с гарантией качества и соблюдения сроков
+              </p>
 
               <div className="flex flex-col gap-2.5 mb-6">
                 {[
@@ -664,13 +720,8 @@ export default function Index() {
                 </button>
               </div>
             </div>
-            {/* Right — image */}
-            <div className="relative rounded-2xl overflow-hidden shadow-xl" style={{ aspectRatio: "4/3" }}>
-              <img src={HERO_IMAGE} alt="Полиграфия" className="w-full h-full object-cover" />
-              <div className="absolute bottom-0 left-0 right-0 px-5 py-3" style={{ background: "rgba(30,58,138,0.85)" }}>
-                <span className="text-white font-semibold text-sm">Буклеты, брошюры, каталоги</span>
-              </div>
-            </div>
+            {/* Right — gallery slider */}
+            <HeroGallery onQuiz={() => setQuizOpen(true)} />
           </div>
         </div>
       </section>
@@ -724,53 +775,39 @@ export default function Index() {
       {/* PORTFOLIO */}
       <section id="portfolio" className="py-20" style={{ background: "var(--c-bg)" }}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-12 text-center">
-            <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>Продукция</div>
+          <div className="mb-12">
+            <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-accent)" }}>ЧТО МЫ ДЕЛАЕМ</div>
             <h2 className="font-extrabold mb-2" style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--c-text)" }}>
-              Работаем с тиражами от 500 штук
+              Продукция, которую <span style={{ color: "var(--c-accent)" }}>мы печатаем</span>
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
             {PORTFOLIO_ITEMS.map((item, i) => (
-              <div key={i} className="relative rounded-xl overflow-hidden transition-all duration-300"
+              <div key={i} className="relative p-6 rounded-xl"
                 style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}>
-                {/* Photo area */}
-                <div className="relative" style={{ aspectRatio: "16/9", background: "var(--c-bg)" }}>
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center" style={{ background: "rgba(37,99,235,0.08)" }}>
-                      <Icon name={item.icon as AnyIcon} size={36} fallback="Package" style={{ color: "var(--c-blue)" } as React.CSSProperties} />
-                    </div>
-                  </div>
-                  {item.badge && (
-                    <span className="absolute top-3 right-3 px-2 py-1 rounded text-xs font-bold text-white" style={{ background: "var(--c-blue)" }}>
-                      {item.badge}
-                    </span>
-                  )}
-                  <div className="absolute bottom-0 left-0 right-0 px-4 py-2" style={{ background: "var(--c-blue-dark)" }}>
-                    <span className="text-white font-semibold text-sm">{item.title}</span>
-                  </div>
+                {item.badge && (
+                  <span className="absolute top-4 right-4 px-2 py-1 rounded text-xs font-bold text-white" style={{ background: "var(--c-blue)" }}>
+                    {item.badge}
+                  </span>
+                )}
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ background: "rgba(37,99,235,0.08)" }}>
+                  <Icon name={item.icon as AnyIcon} size={26} fallback="Package" style={{ color: "var(--c-blue)" } as React.CSSProperties} />
                 </div>
-                {/* Features */}
-                <div className="p-5">
-                  <div className="flex flex-col gap-1.5 mb-4">
-                    {item.desc.split(". ").filter(Boolean).map((feat, fi) => (
-                      <div key={fi} className="flex items-center gap-2 text-sm" style={{ color: "var(--c-text)" }}>
-                        <Icon name="Check" size={14} style={{ color: "var(--c-accent)", flexShrink: 0 } as React.CSSProperties} />
-                        <span>{feat}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <button onClick={() => setQuizOpen(true)}
-                    className="w-full py-2.5 rounded-md font-bold text-white text-sm transition-all hover:opacity-90"
-                    style={{ background: "var(--c-blue)", fontFamily: "Onest, sans-serif", letterSpacing: "0.04em" }}>
-                    РАССЧИТАТЬ ТОЧНУЮ СТОИМОСТЬ
-                  </button>
-                </div>
+                <h3 className="font-bold mb-2" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>{item.title}</h3>
+                <p className="text-sm" style={{ color: "var(--c-muted)", lineHeight: 1.6 }}>{item.desc}</p>
               </div>
             ))}
           </div>
 
+          <div className="text-center">
+            <button onClick={() => setQuizOpen(true)}
+              className="inline-flex items-center gap-3 px-10 py-4 rounded-md font-bold text-white transition-all hover:opacity-90"
+              style={{ background: "var(--c-accent)", fontFamily: "Onest, sans-serif", fontSize: "1rem", letterSpacing: "0.05em" }}>
+              <Icon name="Search" size={20} />
+              ПОДОБРАТЬ УПАКОВКУ ПОД ВАШ ПРОДУКТ
+            </button>
+          </div>
         </div>
       </section>
 
@@ -1208,6 +1245,7 @@ export default function Index() {
       </footer>
 
       <style>{`
+        @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-33.333%); } }
         input::placeholder, textarea::placeholder { color: var(--c-muted); }
         html { scroll-behavior: smooth; }
       `}</style>
