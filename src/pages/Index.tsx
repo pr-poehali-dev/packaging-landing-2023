@@ -474,11 +474,11 @@ function QuizModal({ onClose }: { onClose: () => void }) {
 }
 
 const HERO_SLIDES = [
-  { img: HERO_IMAGE, label: "Крафт-пакеты для фастфуда" },
-  { img: HERO_IMAGE, label: "Коробки для кондитерских изделий" },
-  { img: HERO_IMAGE, label: "Упаковка для косметики" },
-  { img: HERO_IMAGE, label: "Картонная упаковка для чая" },
-  { img: HERO_IMAGE, label: "Фармацевтические пачки" },
+  { img: "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/files/81ccbf32-539c-44a2-970f-73e43199e688.jpg", label: "Крафт-пакеты для фастфуда" },
+  { img: "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/files/6ff3ab8d-2ca2-4fa3-ac29-f49c8d32035e.jpg", label: "Коробки для кондитерских изделий" },
+  { img: "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/files/7c6b9123-d0ea-4afb-b8ec-672ed5f8d2a5.jpg", label: "Упаковка для косметики" },
+  { img: "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/files/1a7405fb-9672-43fe-b20b-b8a65fb4e036.jpg", label: "Картонная упаковка для чая" },
+  { img: "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/files/8d0f6f8d-ab1b-4d26-95e6-59b93353ad16.jpg", label: "Фармацевтические пачки" },
 ];
 
 function HeroGallery({ onQuiz }: { onQuiz: () => void }) {
@@ -680,7 +680,7 @@ export default function Index() {
             {/* Left */}
             <div>
               <h1 className="font-extrabold leading-tight mb-3"
-                style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.6rem, 3.2vw, 2.6rem)", letterSpacing: "-0.02em", color: "var(--c-text)" }}>
+                style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.4rem, 2.4vw, 2.1rem)", letterSpacing: "-0.02em", color: "var(--c-text)" }}>
                 Производство и печать упаковки из картона<br />
                 от <span style={{ color: "var(--c-blue)" }}>5 000 шт.</span> в Москве за <span style={{ color: "var(--c-blue)" }}>5 дней</span>
               </h1>
