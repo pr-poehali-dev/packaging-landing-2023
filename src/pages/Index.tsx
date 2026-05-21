@@ -65,7 +65,7 @@ const PORTFOLIO_ITEMS = [
   { icon: "Cake", title: "Кондитерские изделия", desc: "Коробки для тортов, пирожных, конфет. С окном и без." },
   { icon: "ShoppingBasket", title: "Крупы, чай, кофе", desc: "Пакеты с zip-lock, коробки, сашетки. Барьерные материалы." },
   { icon: "WashingMachine", title: "Бытовая химия", desc: "Упаковка из плотного картона с ламинацией. Устойчива к влаге." },
-  { icon: "Pill", title: "Фармацевтические препараты", desc: "Пачки из мелованного картона по ГОСТ. Сериализация." },
+  { icon: "Pill", title: "Фармацевтические препараты", titleMobile: "Фармацевтика", desc: "Пачки из мелованного картона по ГОСТ. Сериализация." },
   { icon: "FlaskConical", title: "Парфюмерия", desc: "Люксовая упаковка с тиснением, фольгой, выборочным UV." },
   { icon: "Gem", title: "Косметика", desc: "Картонные тубы и пеналы с матовой или софт-тач ламинацией." },
   { icon: "Container", title: "БАДы", desc: "Картонная упаковка с маркировкой, штрихкодами и серийными номерами." },
@@ -92,14 +92,32 @@ type PortfolioProject = {
   img: string;
 };
 
+const BB1 = "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/bucket/710e3bce-98b1-454d-a759-a7559a4c2e46.jpg";
+const BB2 = "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/files/6cab639f-4145-42ae-bfc1-d786bd55a15d.jpg";
+const BB3 = "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/bucket/9b417abf-7ce6-484d-9067-6c04b487b253.png";
+
 const PORTFOLIO_PROJECTS: PortfolioProject[] = [
-  { id: 1, category: "Фастфуд", title: "Крафт-пакет с логотипом", volume: "50 000 шт.", material: "Крафт-бумага 120 г/м²", deadline: "4 дня", format: "330×200×100 мм", density: "120 г/м²", printType: "Офсетная 4+0", result: "Акция запущена вовремя, продажи +23%" , img: HERO_IMAGE },
-  { id: 2, category: "Кондитерские", title: "Коробка под торт с окном", volume: "10 000 шт.", material: "Мелованный картон 350 г/м²", deadline: "5 дней", format: "250×250×120 мм", density: "350 г/м²", printType: "Офсет 4+0 + лак", result: "Постоянный клиент, 3 повторных заказа", img: HERO_IMAGE },
-  { id: 3, category: "Бакалея", title: "Коробка для чая (80 пакетиков)", volume: "20 000 шт.", material: "Картон FBB 300 г/м²", deadline: "6 дней", format: "160×100×80 мм", density: "300 г/м²", printType: "Офсет 4+4 + матовая ламинация", result: "Выход на федеральные сети", img: HERO_IMAGE },
-  { id: 4, category: "Фармацевтика", title: "Пачка для капсул (ГОСТ)", volume: "100 000 шт.", material: "Мелованный картон 260 г/м²", deadline: "7 дней", format: "110×40×30 мм", density: "260 г/м²", printType: "Офсет 4+4, сериализация", result: "Регистрация препарата в Росздравнадзоре", img: HERO_IMAGE },
-  { id: 5, category: "Косметика", title: "Обечайка для крема с тиснением", volume: "5 000 шт.", material: "Мелованный картон 400 г/м²", deadline: "8 дней", format: "Диаметр 80 мм, высота 120 мм", density: "400 г/м²", printType: "Офсет + тиснение золото + выборочный UV", result: "Премиум-линейка, рост среднего чека на 18%", img: HERO_IMAGE },
-  { id: 6, category: "Бытовая химия", title: "Коробка под стиральный порошок", volume: "30 000 шт.", material: "Картон с влагостойкой ламинацией", deadline: "5 дней", format: "280×180×90 мм", density: "320 г/м²", printType: "Офсет 4+0 + глянцевая ламинация", result: "Размещение в розничных сетях Москвы", img: HERO_IMAGE },
-  { id: 7, category: "БАДы", title: "Картонная упаковка для витаминов", volume: "15 000 шт.", material: "Мелованный картон 300 г/м²", deadline: "5 дней", format: "120×60×40 мм", density: "300 г/м²", printType: "Офсет 4+4 + матовая ламинация + штрихкод", result: "Успешный запуск на маркетплейсах", img: HERO_IMAGE },
+  { id: 1, category: "Фастфуд", title: "Пример 1 — Коробка для бургеров", volume: "50 000 шт.", material: "Крафт-бумага 120 г/м²", deadline: "4 дня", format: "330×200×100 мм", density: "120 г/м²", printType: "Офсетная 4+0", result: "Акция запущена вовремя, продажи +23%", img: BB1 },
+  { id: 11, category: "Фастфуд", title: "Пример 2 — Крафт-упаковка с логотипом", volume: "30 000 шт.", material: "Крафт-бумага 120 г/м²", deadline: "5 дней", format: "280×180×90 мм", density: "120 г/м²", printType: "Офсетная 4+0", result: "Повторный заказ через 2 недели", img: BB2 },
+  { id: 12, category: "Фастфуд", title: "Пример 3 — Коробка сети фастфуда", volume: "100 000 шт.", material: "Крафт-бумага 150 г/м²", deadline: "6 дней", format: "300×200×100 мм", density: "150 г/м²", printType: "Офсет 4+0 + лак", result: "Постоянный клиент, 5 повторных заказов", img: BB3 },
+  { id: 2, category: "Кондитерские", title: "Пример 1 — Коробка под торт с окном", volume: "10 000 шт.", material: "Мелованный картон 350 г/м²", deadline: "5 дней", format: "250×250×120 мм", density: "350 г/м²", printType: "Офсет 4+0 + лак", result: "Постоянный клиент, 3 повторных заказа", img: HERO_IMAGE },
+  { id: 21, category: "Кондитерские", title: "Пример 2 — Коробка для пирожных", volume: "5 000 шт.", material: "Мелованный картон 300 г/м²", deadline: "5 дней", format: "200×150×80 мм", density: "300 г/м²", printType: "Офсет 4+4 + матовый лак", result: "Сезонная коллекция, тираж распродан за неделю", img: HERO_IMAGE },
+  { id: 22, category: "Кондитерские", title: "Пример 3 — Новогодняя упаковка", volume: "20 000 шт.", material: "Мелованный картон 350 г/м²", deadline: "7 дней", format: "220×220×130 мм", density: "350 г/м²", printType: "Офсет + тиснение фольгой", result: "Рост продаж на 35% в декабре", img: HERO_IMAGE },
+  { id: 3, category: "Бакалея", title: "Пример 1 — Коробка для чая (80 пакетиков)", volume: "20 000 шт.", material: "Картон FBB 300 г/м²", deadline: "6 дней", format: "160×100×80 мм", density: "300 г/м²", printType: "Офсет 4+4 + матовая ламинация", result: "Выход на федеральные сети", img: HERO_IMAGE },
+  { id: 31, category: "Бакалея", title: "Пример 2 — Упаковка кофе", volume: "15 000 шт.", material: "Картон FBB 280 г/м²", deadline: "6 дней", format: "140×90×70 мм", density: "280 г/м²", printType: "Офсет 4+4 + глянец", result: "Запуск в 50 магазинах сети", img: HERO_IMAGE },
+  { id: 32, category: "Бакалея", title: "Пример 3 — Пакет для круп с zip-lock", volume: "50 000 шт.", material: "Крафт с ламинацией", deadline: "7 дней", format: "250×350 мм", density: "130 г/м²", printType: "Офсет 4+0", result: "Размещение в X5 и Магните", img: HERO_IMAGE },
+  { id: 4, category: "Фармацевтика", title: "Пример 1 — Пачка для капсул (ГОСТ)", volume: "100 000 шт.", material: "Мелованный картон 260 г/м²", deadline: "7 дней", format: "110×40×30 мм", density: "260 г/м²", printType: "Офсет 4+4, сериализация", result: "Регистрация препарата в Росздравнадзоре", img: HERO_IMAGE },
+  { id: 41, category: "Фармацевтика", title: "Пример 2 — Картонная пачка для таблеток", volume: "200 000 шт.", material: "Мелованный картон 250 г/м²", deadline: "8 дней", format: "100×35×25 мм", density: "250 г/м²", printType: "Офсет 4+4 + матовая ламинация", result: "Поставка в аптечные сети", img: HERO_IMAGE },
+  { id: 42, category: "Фармацевтика", title: "Пример 3 — Упаковка для сиропа", volume: "50 000 шт.", material: "Мелованный картон 280 г/м²", deadline: "6 дней", format: "120×50×50 мм", density: "280 г/м²", printType: "Офсет 4+4, штрихкод", result: "Выход препарата на рынок", img: HERO_IMAGE },
+  { id: 5, category: "Косметика", title: "Пример 1 — Тuba для крема с тиснением", volume: "5 000 шт.", material: "Мелованный картон 400 г/м²", deadline: "8 дней", format: "Диаметр 80 мм, высота 120 мм", density: "400 г/м²", printType: "Офсет + тиснение золото + UV", result: "Премиум-линейка, рост чека на 18%", img: HERO_IMAGE },
+  { id: 51, category: "Косметика", title: "Пример 2 — Коробка для крема", volume: "8 000 шт.", material: "Мелованный картон 350 г/м²", deadline: "7 дней", format: "90×90×90 мм", density: "350 г/м²", printType: "Офсет + выборочный UV", result: "Новинка вошла в топ продаж", img: HERO_IMAGE },
+  { id: 52, category: "Косметика", title: "Пример 3 — Люкс-упаковка парфюма", volume: "3 000 шт.", material: "Мелованный картон 450 г/м²", deadline: "10 дней", format: "80×80×160 мм", density: "450 г/м²", printType: "Офсет + фольга + тиснение", result: "Запуск премиум-коллекции", img: HERO_IMAGE },
+  { id: 6, category: "Бытовая химия", title: "Пример 1 — Коробка под стиральный порошок", volume: "30 000 шт.", material: "Картон с влагостойкой ламинацией", deadline: "5 дней", format: "280×180×90 мм", density: "320 г/м²", printType: "Офсет 4+0 + глянцевая ламинация", result: "Размещение в розничных сетях Москвы", img: HERO_IMAGE },
+  { id: 61, category: "Бытовая химия", title: "Пример 2 — Упаковка для таблеток для посудомойки", volume: "25 000 шт.", material: "Картон с влагостойкой ламинацией", deadline: "6 дней", format: "200×150×80 мм", density: "320 г/м²", printType: "Офсет 4+0 + глянец", result: "Запуск в DIY-сетях", img: HERO_IMAGE },
+  { id: 62, category: "Бытовая химия", title: "Пример 3 — Коробка для капсул стирки", volume: "40 000 шт.", material: "Картон с ламинацией", deadline: "5 дней", format: "240×160×100 мм", density: "300 г/м²", printType: "Офсет 4+0", result: "Экономия 20% по сравнению с предыдущим поставщиком", img: HERO_IMAGE },
+  { id: 7, category: "БАДы", title: "Пример 1 — Картонная упаковка для витаминов", volume: "15 000 шт.", material: "Мелованный картон 300 г/м²", deadline: "5 дней", format: "120×60×40 мм", density: "300 г/м²", printType: "Офсет 4+4 + матовая ламинация + штрихкод", result: "Успешный запуск на маркетплейсах", img: HERO_IMAGE },
+  { id: 71, category: "БАДы", title: "Пример 2 — Упаковка Omega-3", volume: "20 000 шт.", material: "Мелованный картон 280 г/м²", deadline: "5 дней", format: "130×65×45 мм", density: "280 г/м²", printType: "Офсет 4+4 + глянец", result: "ТОП-10 продаж Wildberries", img: HERO_IMAGE },
+  { id: 72, category: "БАДы", title: "Пример 3 — Упаковка комплекс витаминов", volume: "10 000 шт.", material: "Мелованный картон 300 г/м²", deadline: "6 дней", format: "110×55×35 мм", density: "300 г/м²", printType: "Офсет 4+4 + матовый лак + серийный номер", result: "Сертификация ЕАЭС пройдена", img: HERO_IMAGE },
 ];
 
 const PORTFOLIO_CATEGORIES = ["Все", "Фастфуд", "Кондитерские", "Бакалея", "Фармацевтика", "Косметика", "Бытовая химия", "БАДы"];
@@ -315,9 +333,12 @@ function QuizModal({ onClose }: { onClose: () => void }) {
 
         {!submitted && step < 4 && (
           <>
-            <div className="mb-2 text-xs font-bold" style={{ color: "var(--c-blue)", letterSpacing: "0.1em" }}>ШАГ {step + 1} ИЗ {TOTAL_STEPS}</div>
-            <div className="w-full h-1 rounded-full mb-6" style={{ background: "var(--c-border)" }}>
-              <div className="h-1 rounded-full transition-all duration-500" style={{ width: `${((step + 1) / TOTAL_STEPS) * 100}%`, background: "var(--c-accent)" }} />
+            <div className="mb-2 flex items-center justify-between text-xs font-bold">
+              <span style={{ color: "var(--c-blue)", letterSpacing: "0.1em" }}>ШАГ {step + 1} ИЗ {TOTAL_STEPS}</span>
+              <span style={{ color: "var(--c-accent)", fontFamily: "Onest, sans-serif" }}>{Math.round(((step + 1) / TOTAL_STEPS) * 100)}%</span>
+            </div>
+            <div className="w-full h-1.5 rounded-full mb-6" style={{ background: "var(--c-border)" }}>
+              <div className="h-1.5 rounded-full transition-all duration-500" style={{ width: `${((step + 1) / TOTAL_STEPS) * 100}%`, background: "var(--c-accent)" }} />
             </div>
           </>
         )}
@@ -473,12 +494,13 @@ function QuizModal({ onClose }: { onClose: () => void }) {
   );
 }
 
+const BURGER_BOX_IMG = "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/bucket/710e3bce-98b1-454d-a759-a7559a4c2e46.jpg";
+const BURGER_BOX_IMG2 = "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/files/6cab639f-4145-42ae-bfc1-d786bd55a15d.jpg";
+
 const HERO_SLIDES = [
-  { img: "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/files/81ccbf32-539c-44a2-970f-73e43199e688.jpg", label: "Крафт-пакеты для фастфуда" },
-  { img: "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/files/6ff3ab8d-2ca2-4fa3-ac29-f49c8d32035e.jpg", label: "Коробки для кондитерских изделий" },
-  { img: "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/files/7c6b9123-d0ea-4afb-b8ec-672ed5f8d2a5.jpg", label: "Упаковка для косметики" },
-  { img: "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/files/1a7405fb-9672-43fe-b20b-b8a65fb4e036.jpg", label: "Картонная упаковка для чая" },
-  { img: "https://cdn.poehali.dev/projects/10bd6f4a-1016-49d2-98a0-b68c65f90cfa/files/8d0f6f8d-ab1b-4d26-95e6-59b93353ad16.jpg", label: "Фармацевтические пачки" },
+  { img: BURGER_BOX_IMG, label: "Коробка для бургеров — сеть фастфуда" },
+  { img: BURGER_BOX_IMG2, label: "Крафт-упаковка с логотипом" },
+  { img: BURGER_BOX_IMG, label: "Производство коробок для бургеров" },
 ];
 
 function HeroGallery({ onQuiz }: { onQuiz: () => void }) {
@@ -488,7 +510,10 @@ function HeroGallery({ onQuiz }: { onQuiz: () => void }) {
   return (
     <div className="relative rounded-2xl overflow-hidden shadow-xl select-none" style={{ aspectRatio: "4/3" }}>
       <img src={HERO_SLIDES[idx].img} alt={HERO_SLIDES[idx].label} className="w-full h-full object-cover transition-opacity duration-300" />
-      <div className="absolute bottom-0 left-0 right-0 px-5 py-3 flex items-center justify-between" style={{ background: "rgba(30,58,138,0.88)" }}>
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <span className="px-4 py-1.5 rounded-full text-sm font-bold border-2" style={{ background: "rgba(0,0,0,0.45)", color: "rgba(255,255,255,0.85)", borderColor: "rgba(255,255,255,0.35)", letterSpacing: "0.12em" }}>ПРИМЕР</span>
+      </div>
+      <div className="absolute bottom-0 left-0 right-0 px-5 py-3 flex items-center justify-between" style={{ background: "rgba(26,58,107,0.88)" }}>
         <span className="text-white font-semibold text-sm">{HERO_SLIDES[idx].label}</span>
         <span className="text-white text-xs opacity-70">{idx + 1} / {HERO_SLIDES.length}</span>
       </div>
@@ -588,7 +613,7 @@ export default function Index() {
       <nav className="fixed top-0 left-0 right-0 z-40 transition-all duration-300"
         style={{ background: "#fff", boxShadow: scrolled ? "0 2px 12px rgba(0,0,0,0.10)" : "0 1px 0 var(--c-border)" }}>
         {/* Top bar */}
-        <div style={{ background: "var(--c-blue-dark)", padding: "6px 0" }}>
+        <div className="hidden sm:block" style={{ background: "var(--c-blue-dark)", padding: "6px 0" }}>
           <div className="max-w-7xl mx-auto px-6 flex items-center justify-between text-xs" style={{ color: "rgba(255,255,255,0.85)" }}>
             <div className="hidden sm:flex items-center gap-4">
               <span className="flex items-center gap-1.5"><Icon name="MapPin" size={12} />г. Москва, ул. Горбунова, 2</span>
@@ -660,7 +685,7 @@ export default function Index() {
       </nav>
 
       {/* TICKER */}
-      <div className="overflow-hidden py-2.5" style={{ background: "var(--c-blue-dark)", marginTop: "100px" }}>
+      <div className="hidden sm:block overflow-hidden py-2.5" style={{ background: "var(--c-blue-dark)", marginTop: "100px" }}>
         <div className="flex whitespace-nowrap" style={{ animation: "ticker 28s linear infinite" }}>
           {[...Array(3)].map((_, gi) => (
             <div key={gi} className="flex items-center gap-0 flex-shrink-0">
@@ -683,8 +708,8 @@ export default function Index() {
             <div>
               <h1 className="font-extrabold leading-tight mb-3"
                 style={{ fontFamily: "Onest, sans-serif", fontSize: "clamp(1.4rem, 2.4vw, 2.1rem)", letterSpacing: "-0.02em", color: "var(--c-text)" }}>
-                Производство и печать упаковки из картона с вашим логотипом<br />
-                от <span style={{ color: "var(--c-blue)" }}>5 000 шт.</span> в Москве за <span style={{ color: "var(--c-blue)" }}>5 дней</span>
+                <span className="hidden sm:inline">Производство и печать упаковки<br />из картона с вашим логотипом<br />от <span style={{ color: "var(--c-accent)" }}>5 000 шт.</span> в Москве за <span style={{ color: "var(--c-accent)" }}>5 дней</span></span>
+                <span className="sm:hidden">Производство и печать упаковки из картона с вашим логотипом<br />от <span style={{ color: "var(--c-accent)" }}>5 000 шт.</span> в Москве за <span style={{ color: "var(--c-accent)" }}>5 дней</span></span>
               </h1>
               <p className="mb-5 text-base font-medium" style={{ color: "var(--c-muted)" }}>
                 с гарантией качества и соблюдения сроков
@@ -750,7 +775,7 @@ export default function Index() {
       </section>
 
       {/* ADVANTAGES */}
-      <section id="advantages" className="py-20" style={{ background: "var(--c-bg)" }}>
+      <section id="advantages" className="py-12" style={{ background: "var(--c-bg)" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-12 text-center">
             <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>Почему мы</div>
@@ -759,11 +784,25 @@ export default function Index() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          {/* Desktop: 4 cols grid */}
+          <div className="hidden sm:grid lg:grid-cols-4 sm:grid-cols-2 gap-5">
             {ADVANTAGES.map((a, i) => (
               <div key={i} className="p-6 rounded-xl transition-all duration-300"
                 style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "rgba(39,174,96,0.10)" }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "rgba(211,47,47,0.08)" }}>
+                  <Icon name={a.icon as AnyIcon} size={22} fallback="Star" style={{ color: "var(--c-accent)" } as React.CSSProperties} />
+                </div>
+                <h3 className="font-bold text-sm mb-2" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>{a.title}</h3>
+                <p className="text-sm" style={{ color: "var(--c-muted)", lineHeight: 1.6 }}>{a.text}</p>
+              </div>
+            ))}
+          </div>
+          {/* Mobile: horizontal swipe */}
+          <div className="sm:hidden flex gap-4 overflow-x-auto pb-2" style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}>
+            {ADVANTAGES.map((a, i) => (
+              <div key={i} className="flex-shrink-0 p-5 rounded-xl"
+                style={{ width: "72vw", maxWidth: "280px", background: "var(--c-surface)", border: "1px solid var(--c-border)", scrollSnapAlign: "start", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ background: "rgba(211,47,47,0.08)" }}>
                   <Icon name={a.icon as AnyIcon} size={22} fallback="Star" style={{ color: "var(--c-accent)" } as React.CSSProperties} />
                 </div>
                 <h3 className="font-bold text-sm mb-2" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>{a.title}</h3>
@@ -775,7 +814,7 @@ export default function Index() {
       </section>
 
       {/* PORTFOLIO */}
-      <section id="portfolio" className="py-20" style={{ background: "var(--c-bg)" }}>
+      <section id="portfolio" className="py-12" style={{ background: "var(--c-bg)" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-12">
             <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-accent)" }}>ЧТО МЫ ДЕЛАЕМ</div>
@@ -796,7 +835,10 @@ export default function Index() {
                 <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-2 sm:mb-4" style={{ background: "rgba(37,99,235,0.08)" }}>
                   <Icon name={item.icon as AnyIcon} size={18} fallback="Package" style={{ color: "var(--c-blue)" } as React.CSSProperties} />
                 </div>
-                <h3 className="font-bold text-xs sm:text-base mb-1 sm:mb-2 leading-tight" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>{item.title}</h3>
+                <h3 className="font-bold text-xs sm:text-base mb-1 sm:mb-2 leading-tight" style={{ fontFamily: "Onest, sans-serif", color: "var(--c-text)" }}>
+                  <span className="hidden sm:inline">{item.title}</span>
+                  <span className="sm:hidden">{(item as typeof item & { titleMobile?: string }).titleMobile || item.title}</span>
+                </h3>
                 <p className="text-xs hidden sm:block" style={{ color: "var(--c-muted)", lineHeight: 1.6 }}>{item.desc}</p>
               </div>
             ))}
@@ -814,7 +856,7 @@ export default function Index() {
       </section>
 
       {/* PORTFOLIO GALLERY */}
-      <section id="works" className="py-20" style={{ background: "var(--c-bg)" }}>
+      <section id="works" className="py-12" style={{ background: "var(--c-bg)" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-10">
             <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>Портфолио</div>
@@ -1024,7 +1066,7 @@ export default function Index() {
       </section>
 
       {/* GALLERY */}
-      <section id="gallery" className="py-20" style={{ background: "#fff" }}>
+      <section id="gallery" className="py-12" style={{ background: "#fff" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-12 text-center">
             <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>Кейсы</div>
@@ -1130,7 +1172,7 @@ export default function Index() {
       </section>
 
       {/* REVIEWS */}
-      <section id="reviews" className="py-20" style={{ background: "var(--c-bg)" }}>
+      <section id="reviews" className="py-12" style={{ background: "var(--c-bg)" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-12 text-center">
             <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>Отзывы клиентов</div>
@@ -1180,7 +1222,7 @@ export default function Index() {
               <button onClick={() => setShowAllReviews(true)}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-80"
                 style={{ background: "var(--c-surface)", border: "1px solid var(--c-border)", color: "var(--c-text)" }}>
-                Показать ещё
+                Показать ещё ({REVIEWS.length - 3})
                 <Icon name="ChevronDown" size={16} style={{ color: "var(--c-accent)" } as React.CSSProperties} />
               </button>
             </div>
@@ -1189,7 +1231,7 @@ export default function Index() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="py-20" style={{ background: "#fff" }}>
+      <section id="faq" className="py-12" style={{ background: "#fff" }}>
         <div className="max-w-4xl mx-auto px-6">
           <div className="mb-12 text-center">
             <div className="text-xs font-bold tracking-[0.2em] mb-3 uppercase" style={{ color: "var(--c-blue)" }}>FAQ</div>
@@ -1219,7 +1261,7 @@ export default function Index() {
       </section>
 
       {/* CONTACTS */}
-      <section id="contacts" className="py-20" style={{ background: "var(--c-bg)" }}>
+      <section id="contacts" className="py-12" style={{ background: "var(--c-bg)" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-start">
             {/* Left */}

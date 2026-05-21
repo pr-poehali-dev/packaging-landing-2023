@@ -96,11 +96,11 @@
   --c-border: #e2e5eb;
   --c-text: #1a2236;
   --c-muted: #6b7a96;
-  --c-accent: #27ae60;
-  --c-accent-hover: #219d54;
-  --c-blue: #2563eb;
-  --c-blue-dark: #1e3a8a;
-  --c-blue-bg: #1e3a8a;
+  --c-accent: #d32f2f;
+  --c-accent-hover: #b71c1c;
+  --c-blue: #1a3a6b;
+  --c-blue-dark: #1a3a6b;
+  --c-blue-bg: #1a3a6b;
 }
 
 @layer base {
